@@ -72,8 +72,9 @@ The install script copies the workflow and issue template into the right places.
     hatch.md              # Issue template for bootstrapping agent identity
     .GITCLAW-AGENTS.md       # Default agent identity file installed as AGENTS.md
   lifecycle/
-    main.ts               # Core agent orchestrator
-    preinstall.ts          # Adds 👀 reaction on issue activity
+    .GITCLAW-AGENT.ts      # Core agent orchestrator
+    .GITCLAW-INDICATOR.ts  # Adds 👀 reaction on issue activity
+    .GITCLAW-ENABLED.ts    # Fail-closed guard — verifies opt-in sentinel exists
   .pi/                    # Agent personality & skills config
   AGENTS.md               # Agent identity file
   install/package.json  # Dependencies

@@ -1,4 +1,8 @@
-![gitclaw banner](banner.jpeg)
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/logo.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 A personal AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.GITCLAW` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
 

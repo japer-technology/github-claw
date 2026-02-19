@@ -1,4 +1,4 @@
-# .GITCLAW use .PI
+# 🦞 GITCLAW use .PI
 
 <p align="center">
   <picture>

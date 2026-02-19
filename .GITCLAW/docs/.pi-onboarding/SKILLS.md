@@ -1,4 +1,10 @@
-# .pi Skills
+# 🦞 GITCLAW .pi Skills
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/.GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 Skills are modular, self-contained packages that extend the agent's capabilities. They transform the agent from a general-purpose assistant into a specialized one with domain expertise, reusable scripts, and procedural knowledge.
 

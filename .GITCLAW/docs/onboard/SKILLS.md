@@ -37,9 +37,9 @@ Enables the agent to search and recall information from past sessions.
 
 **Key commands**:
 ```bash
-rg -i "search term" state/memory.log          # Search memory
-tail -30 state/memory.log                       # Recent memories
-rg -i "search term" state/sessions/             # Search all sessions
+rg -i "search term" state/memory.log # Search memory
+tail -30 state/memory.log # Recent memories
+rg -i "search term" state/sessions/ # Search all sessions
 ```
 
 ### Skill Creator

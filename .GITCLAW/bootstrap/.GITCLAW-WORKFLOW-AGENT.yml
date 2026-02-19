@@ -28,21 +28,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: '20'
 
       - name: Preinstall
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bun .GITCLAW/lifecycle/preinstall.ts
+        run: node .GITCLAW/lifecycle/preinstall.js
 
       - name: Install dependencies
-        run: cd .GITCLAW && bun install --frozen-lockfile
+        run: cd .GITCLAW && npm ci
 
       - name: Run
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bun .GITCLAW/lifecycle/main.ts
+        run: node .GITCLAW/lifecycle/main.js

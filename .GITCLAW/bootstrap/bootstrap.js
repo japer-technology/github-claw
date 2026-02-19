@@ -1,30 +1,31 @@
 /**
- * bootstrap.ts — One-time setup script for gitclaw.
+ * bootstrap.js — One-time setup script for gitclaw.
  *
  * Copies the GitHub Actions workflow, issue templates, and git attributes
  * from `.GITCLAW/bootstrap` into the standard locations the repo needs to function.
  * Existing files are never overwritten — only missing ones are installed.
  *
  * Usage:
- *   bun .GITCLAW/bootstrap/bootstrap.ts
+ *   node .GITCLAW/bootstrap/bootstrap.js
  */
 
 import { existsSync, mkdirSync, cpSync, readFileSync, writeFileSync } from "fs";
-import { resolve } from "path";
+import { resolve, dirname } from "path";
+import { fileURLToPath } from "url";
 
 /** Directory containing the installable bootstrap resources. */
-const bootstrapDir = import.meta.dir;
+const bootstrapDir = dirname(fileURLToPath(import.meta.url));
 
 /** Repository root — two levels above `.GITCLAW/bootstrap/`. */
 const repoRoot = resolve(bootstrapDir, "..", "..");
 
 /** Create a directory (and parents) if it does not already exist. */
-function ensureDir(dir: string) {
+function ensureDir(dir) {
   mkdirSync(dir, { recursive: true });
 }
 
 /** Copy `src` to `dest` only when `dest` is absent; logs the outcome. */
-function copyIfMissing(src: string, dest: string, label: string) {
+function copyIfMissing(src, dest, label) {
   if (existsSync(dest)) {
     console.log(`  ⏭  ${label} already exists, skipping`);
   } else {
@@ -37,7 +38,7 @@ function copyIfMissing(src: string, dest: string, label: string) {
  * Ensure that `.gitattributes` contains `attributeRule`.
  * Creates the file if absent; appends the rule if not already present.
  */
-function ensureAttribute(filePath: string, attributeRule: string) {
+function ensureAttribute(filePath, attributeRule) {
   if (!existsSync(filePath)) {
     writeFileSync(filePath, `${attributeRule}\n`, "utf-8");
     console.log(`  ✅ .gitattributes created with: ${attributeRule}`);
@@ -66,7 +67,7 @@ console.log("🔧 Installing gitclaw into this repository...\n");
 console.log("Workflows:");
 ensureDir(resolve(repoRoot, ".github", "workflows"));
 copyIfMissing(
-  resolve(bootstrapDir, ".GITCLAW-AGENT.yml"),
+  resolve(bootstrapDir, ".GITCLAW-WORKFLOW-AGENT.yml"),
   resolve(repoRoot, ".github", "workflows", "agent.yml"),
   ".github/workflows/agent.yml"
 );
@@ -75,7 +76,7 @@ copyIfMissing(
 console.log("\nIssue templates:");
 ensureDir(resolve(repoRoot, ".github", "ISSUE_TEMPLATE"));
 copyIfMissing(
-  resolve(bootstrapDir, "hatch.md"),
+  resolve(bootstrapDir, ".GITCLAW-TEMPLATE-HATCH.md"),
   resolve(repoRoot, ".github", "ISSUE_TEMPLATE", "hatch.md"),
   ".github/ISSUE_TEMPLATE/hatch.md"
 );
@@ -94,6 +95,5 @@ ensureAttribute(resolve(repoRoot, ".gitattributes"), "memory.log merge=union");
 console.log("\n✨ gitclaw installed!\n");
 console.log("Next steps:");
 console.log("  1. Add ANTHROPIC_API_KEY to Settings → Secrets and variables → Actions");
-console.log("  2. Run: cd .GITCLAW/bootstrap && bun install");
-console.log("  3. Commit and push the changes");
-console.log("  4. Open an issue to start chatting with the agent\n");
+console.log("  2. Commit and push the changes");
+console.log("  3. Open an issue to start chatting with the agent\n");

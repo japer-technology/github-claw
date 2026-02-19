@@ -50,15 +50,11 @@ gitclaw lives entirely inside a `.GITCLAW` folder that you drop into your reposi
 1. **Copy the `.GITCLAW` folder** into your repo's root.
 2. **Run the install script** to set up workflows and templates:
    ```bash
-   bun .GITCLAW/bootstrap/bootstrap.ts
+   node .GITCLAW/bootstrap/bootstrap.js
    ```
-3. **Install dependencies:**
-   ```bash
-   cd .GITCLAW/bootstrap && bun install
-   ```
-4. **Add your Anthropic API key** — go to **Settings → Secrets and variables → Actions** and create a secret named `ANTHROPIC_API_KEY`.
-5. **Commit and push** the changes.
-6. **Open an issue** — the agent starts automatically.
+3. **Add your Anthropic API key** — go to **Settings → Secrets and variables → Actions** and create a secret named `ANTHROPIC_API_KEY`.
+4. **Commit and push** the changes.
+5. **Open an issue** — the agent starts automatically.
 
 The install script copies the workflow and issue template into the right places. Agent identity/instructions can live entirely in `.GITCLAW/AGENTS.md` (repo-root `AGENTS.md` is optional for project-local overrides). Everything gitclaw needs to run lives inside `.GITCLAW/`.
 
@@ -67,18 +63,17 @@ The install script copies the workflow and issue template into the right places.
 ```
 .GITCLAW/
   bootstrap/
-    bootstrap.ts          # Setup script — installs workflows & templates
-    .GITCLAW-AGENT.yml    # GitHub Actions workflow template
-    hatch.md              # Issue template for bootstrapping agent identity
-    AGENT                 # Default agent identity file installed as AGENTS.md
+    bootstrap.js              # Setup script — installs workflows & templates
+    .GITCLAW-WORKFLOW-AGENT.yml    # GitHub Actions workflow template
+    .GITCLAW-TEMPLATE-HATCH.md    # Issue template for bootstrapping agent identity
+    AGENT                     # Default agent identity file installed as AGENTS.md
   lifecycle/
-    main.ts               # Core agent orchestrator
-    preinstall.ts          # Adds 👀 reaction on issue activity
+    main.js               # Core agent orchestrator
+    preinstall.js         # Adds 👀 reaction on issue activity
   .pi/                    # Agent personality & skills config
   AGENTS.md               # Agent identity file
-  bootstrap/package.json  # Dependencies
-  bootstrap/package-lock.json # NPM lockfile
-  bun.lock                # Bun lockfile
+  package.json            # Dependencies
+  package-lock.json       # npm lockfile
 ```
 
 ## Security

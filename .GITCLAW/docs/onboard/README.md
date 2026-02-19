@@ -1,5 +1,11 @@
 # .pi — Onboarding Guide
 
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/logo.png" alt="GitClaw" width="500">
+  </picture>
+</p>
+
 Welcome to `.pi`, the brain behind your gitclaw agent. This folder is where identity, memory, skills, and behavior configuration all live. Everything the agent needs to be *someone* — not just something — starts here.
 
 ## What is .pi?

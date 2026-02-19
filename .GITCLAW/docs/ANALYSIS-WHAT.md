@@ -63,10 +63,10 @@ Workflow token permissions are:
 Job steps are intentionally ordered:
 
 1. **Checkout** (`actions/checkout@v4`)
-2. **Setup Bun** (`oven-sh/setup-bun@v2`)
-3. **Preinstall** (`bun lifecycle/preinstall.ts`)
-4. **Install dependencies** (`bun install --frozen-lockfile`)
-5. **Run main logic** (`bun lifecycle/main.ts`)
+2. **Setup Node** (`actions/setup-node@v4`)
+3. **Preinstall** (`node lifecycle/preinstall.js`)
+4. **Install dependencies** (`npm ci`)
+5. **Run main logic** (`node lifecycle/main.js`)
 
 Notably, preinstall runs before dependency installation to immediately signal activity via reaction.
 
@@ -157,7 +157,7 @@ Configures bot git identity at runtime:
 ### 5.7 Running `pi` agent
 Constructs command:
 
-- `bunx pi --mode json --session-dir ./state/sessions -p <prompt>`
+- `node_modules/.bin/pi --mode json --session-dir ./state/sessions -p <prompt>`
 - plus `--session <existing-path>` in resume mode.
 
 Execution model:
@@ -268,9 +268,9 @@ Potential hard failures would come from:
 
 ## 9) Dependency/runtime stack
 
-- Runtime: **Bun**
-- Agent: `@mariozechner/pi-coding-agent` (invoked via `bunx pi`)
-- Tooling used by scripts: `gh`, `git`, `tee`, `tac`, `jq`, `bash`, standard fs APIs.
+- Runtime: **Node.js 20+**
+- Agent: `@mariozechner/pi-coding-agent` (invoked via the `pi` binary from `node_modules/.bin/pi`)
+- Tooling used by scripts: `gh`, `git`, `tee`, `tac`, `jq`, `bash`, standard Node.js `fs`/`child_process` APIs.
 
 `package.json` keeps dependencies minimal; most orchestration power comes from command-line tools in the GitHub-hosted runner.
 

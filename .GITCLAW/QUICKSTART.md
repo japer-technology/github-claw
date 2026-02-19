@@ -5,7 +5,7 @@ Get a personal AI agent running in any GitHub repo in under 5 minutes. No server
 ## Prerequisites
 
 - A GitHub repository (new or existing)
-- [Bun](https://bun.sh) installed locally
+- [Node.js](https://nodejs.org) (v20 or later) installed locally
 - An API key from your chosen LLM provider (see [Supported providers](#supported-providers) below)
 
 ## Setup
@@ -15,18 +15,12 @@ Get a personal AI agent running in any GitHub repo in under 5 minutes. No server
 Copy the `.GITCLAW` folder into your repository root, then run the install script:
 
 ```bash
-bun .GITCLAW/bootstrap/bootstrap.ts
+node .GITCLAW/bootstrap/bootstrap.js
 ```
 
 This sets up the GitHub Actions workflow and issue templates.
 
-**2. Install dependencies**
-
-```bash
-cd .GITCLAW/bootstrap && bun install
-```
-
-**3. Add your API key**
+**2. Add your API key**
 
 In your GitHub repo, go to **Settings → Secrets and variables → Actions** and create a secret for your chosen provider:
 
@@ -40,7 +34,7 @@ In your GitHub repo, go to **Settings → Secrets and variables → Actions** an
 
 Then reference the secret in your workflow (`.github/workflows/agent.yml`) as an environment variable in the **Run** step.
 
-**4. Commit and push**
+**3. Commit and push**
 
 ```bash
 git add -A
@@ -48,7 +42,7 @@ git commit -m "Add gitclaw"
 git push
 ```
 
-**5. Open an issue**
+**4. Open an issue**
 
 Go to your repo's **Issues** tab and create a new issue. Write anything — ask a question, request a file, start a conversation. The agent picks it up automatically.
 

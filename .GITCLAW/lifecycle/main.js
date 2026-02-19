@@ -1,5 +1,5 @@
 /**
- * main.ts — Core agent orchestrator for gitclaw.
+ * main.js — Core agent orchestrator for gitclaw.
  *
  * Lifecycle:
  *   1. Fetch issue title/body from GitHub.
@@ -8,14 +8,17 @@
  *   4. Extract the assistant's final text reply.
  *   5. Commit session state and any repo changes back to git.
  *   6. Post the reply as a comment on the originating issue.
- *   7. Remove the 👀 reaction that `preinstall.ts` added.
+ *   7. Remove the 👀 reaction that `preinstall.js` added.
  */
 
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "fs";
-import { resolve } from "path";
+import { resolve, dirname } from "path";
+import { fileURLToPath } from "url";
+import { spawnSync, spawn } from "child_process";
 
 // --- Paths and event context ------------------------------------------
-const gitclawDir = resolve(import.meta.dir, "..");
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const gitclawDir = resolve(__dirname, "..");
 const stateDir = resolve(gitclawDir, "state");
 const issuesDir = resolve(stateDir, "issues");
 const sessionsDir = resolve(stateDir, "sessions");
@@ -23,34 +26,31 @@ const sessionsDir = resolve(stateDir, "sessions");
 /** Relative path used as a CLI arg for `pi` (must be repo-root-relative). */
 const sessionsDirRelative = ".GITCLAW/state/sessions";
 
-const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH!, "utf-8"));
-const eventName = process.env.GITHUB_EVENT_NAME!;
-const repo = process.env.GITHUB_REPOSITORY!;
+const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH, "utf-8"));
+const eventName = process.env.GITHUB_EVENT_NAME;
+const repo = process.env.GITHUB_REPOSITORY;
 const defaultBranch = event.repository?.default_branch ?? "main";
-const issueNumber: number = event.issue.number;
+const issueNumber = event.issue.number;
 
 // --- Helpers ----------------------------------------------------------
 
 /** Spawn a subprocess, capture stdout, and return the exit code. */
-async function run(cmd: string[], opts?: { stdin?: any }): Promise<{ exitCode: number; stdout: string }> {
-  const proc = Bun.spawn(cmd, {
-    stdout: "pipe",
-    stderr: "inherit",
-    stdin: opts?.stdin,
+function run(cmd) {
+  const result = spawnSync(cmd[0], cmd.slice(1), {
+    encoding: "utf-8",
+    stdio: ["inherit", "pipe", "inherit"],
   });
-  const stdout = await new Response(proc.stdout).text();
-  const exitCode = await proc.exited;
-  return { exitCode, stdout: stdout.trim() };
+  if (result.error) throw result.error;
+  return { exitCode: result.status ?? 0, stdout: (result.stdout ?? "").trim() };
 }
 
 /** Convenience wrapper: run `gh <args>` and return trimmed stdout. */
-async function gh(...args: string[]): Promise<string> {
-  const { stdout } = await run(["gh", ...args]);
-  return stdout;
+function gh(...args) {
+  return run(["gh", ...args]).stdout;
 }
 
 // --- Restore reaction state from preinstall ---------------------------
-// `preinstall.ts` persists the reaction ID so we can clean it up later
+// `preinstall.js` persists the reaction ID so we can clean it up later
 // in the `finally` block, even if the agent run itself fails.
 const reactionState = existsSync("/tmp/reaction-state.json")
   ? JSON.parse(readFileSync("/tmp/reaction-state.json", "utf-8"))
@@ -58,13 +58,10 @@ const reactionState = existsSync("/tmp/reaction-state.json")
 
 try {
   // --- Fetch issue title and body -------------------------------------
-  const title = await gh("issue", "view", String(issueNumber), "--json", "title", "--jq", ".title");
-  const body = await gh("issue", "view", String(issueNumber), "--json", "body", "--jq", ".body");
+  const title = gh("issue", "view", String(issueNumber), "--json", "title", "--jq", ".title");
+  const body = gh("issue", "view", String(issueNumber), "--json", "body", "--jq", ".body");
 
   // --- Resolve or create session mapping ------------------------------
-  // Each issue maps to exactly one session file via `state/issues/<n>.json`.
-  // If a mapping exists and the session file is present, we resume it;
-  // otherwise we start fresh.
   mkdirSync(issuesDir, { recursive: true });
   mkdirSync(sessionsDir, { recursive: true });
 
@@ -86,13 +83,11 @@ try {
   }
 
   // --- Configure git identity ------------------------------------------
-  await run(["git", "config", "user.name", "gitclaw[bot]"]);
-  await run(["git", "config", "user.email", "gitclaw[bot]@users.noreply.github.com"]);
+  run(["git", "config", "user.name", "gitclaw[bot]"]);
+  run(["git", "config", "user.email", "gitclaw[bot]@users.noreply.github.com"]);
 
   // --- Build prompt from event context --------------------------------
-  // For issue_comment events, use the new comment body as the prompt.
-  // For issue-opened events, combine the title and body.
-  let prompt: string;
+  let prompt;
   if (eventName === "issue_comment") {
     prompt = event.comment.body;
   } else {
@@ -108,24 +103,31 @@ try {
     piArgs.push("--session", sessionPath);
   }
 
-  const pi = Bun.spawn(piArgs, { stdout: "pipe", stderr: "ignore" });
-  const tee = Bun.spawn(["tee", "/tmp/agent-raw.jsonl"], { stdin: pi.stdout, stdout: "inherit" });
-  await tee.exited;
+  await new Promise((resolve, reject) => {
+    const pi = spawn(piArgs[0], piArgs.slice(1), { stdio: ["inherit", "pipe", "ignore"] });
+    const tee = spawn("tee", ["/tmp/agent-raw.jsonl"], { stdio: [pi.stdout, "inherit", "inherit"] });
+    tee.on("close", (code) => (code === 0 ? resolve() : reject(new Error(`tee exited with code ${code}`))));
+    pi.on("error", reject);
+    tee.on("error", reject);
+  });
 
   // --- Extract final assistant text ------------------------------------
-  // The agent emits newline-delimited JSON.  We reverse the file with
-  // `tac` and use `jq` to grab the text content from the most recent
-  // `message_end` event — that is the reply we post back to the issue.
-  const tac = Bun.spawn(["tac", "/tmp/agent-raw.jsonl"], { stdout: "pipe" });
-  const jq = Bun.spawn(
-    ["jq", "-r", "-s", '[ .[] | select(.type == "message_end") ] | .[0].message.content[] | select(.type == "text") | .text'],
-    { stdin: tac.stdout, stdout: "pipe" }
-  );
-  const agentText = await new Response(jq.stdout).text();
-  await jq.exited;
+  const agentText = await new Promise((resolve, reject) => {
+    const tac = spawn("tac", ["/tmp/agent-raw.jsonl"], { stdio: ["inherit", "pipe", "inherit"] });
+    const jq = spawn(
+      "jq",
+      ["-r", "-s", '[ .[] | select(.type == "message_end") ] | .[0].message.content[] | select(.type == "text") | .text'],
+      { stdio: [tac.stdout, "pipe", "inherit"] }
+    );
+    const chunks = [];
+    jq.stdout.on("data", (chunk) => chunks.push(chunk));
+    jq.on("close", () => resolve(Buffer.concat(chunks).toString().trim()));
+    jq.on("error", reject);
+    tac.on("error", reject);
+  });
 
   // --- Determine latest session file -----------------------------------
-  const { stdout: latestSession } = await run([
+  const { stdout: latestSession } = run([
     "bash", "-c", `ls -t ${sessionsDirRelative}/*.jsonl 2>/dev/null | head -1`,
   ]);
 
@@ -145,36 +147,32 @@ try {
   }
 
   // --- Commit and push state changes -----------------------------------
-  // Push with a retry loop: on conflict, rebase and try again (up to 3×).
-  await run(["git", "add", "-A"]);
-  const { exitCode } = await run(["git", "diff", "--cached", "--quiet"]);
+  run(["git", "add", "-A"]);
+  const { exitCode } = run(["git", "diff", "--cached", "--quiet"]);
   if (exitCode !== 0) {
-    await run(["git", "commit", "-m", `gitclaw: work on issue #${issueNumber}`]);
+    run(["git", "commit", "-m", `gitclaw: work on issue #${issueNumber}`]);
   }
 
   for (let i = 1; i <= 3; i++) {
-    const push = await run(["git", "push", "origin", `HEAD:${defaultBranch}`]);
+    const push = run(["git", "push", "origin", `HEAD:${defaultBranch}`]);
     if (push.exitCode === 0) break;
     console.log(`Push failed, rebasing and retrying (${i}/3)...`);
-    await run(["git", "pull", "--rebase", "origin", defaultBranch]);
+    run(["git", "pull", "--rebase", "origin", defaultBranch]);
   }
 
   // --- Post reply as issue comment -------------------------------------
-  // GitHub has a ~65 535 character limit on comments; we cap at 60 000
-  // to leave a comfortable margin.
   const commentBody = agentText.slice(0, 60000);
-  await gh("issue", "comment", String(issueNumber), "--body", commentBody);
+  gh("issue", "comment", String(issueNumber), "--body", commentBody);
 
 } finally {
   // --- Guaranteed cleanup: remove 👀 reaction -------------------------
-  // Always runs, even if the agent errored, so the user knows work stopped.
   if (reactionState?.reactionId) {
     try {
       const { reactionId, reactionTarget, commentId } = reactionState;
       if (reactionTarget === "comment" && commentId) {
-        await gh("api", `repos/${repo}/issues/comments/${commentId}/reactions/${reactionId}`, "-X", "DELETE");
+        gh("api", `repos/${repo}/issues/comments/${commentId}/reactions/${reactionId}`, "-X", "DELETE");
       } else {
-        await gh("api", `repos/${repo}/issues/${issueNumber}/reactions/${reactionId}`, "-X", "DELETE");
+        gh("api", `repos/${repo}/issues/${issueNumber}/reactions/${reactionId}`, "-X", "DELETE");
       }
     } catch (e) {
       console.error("Failed to remove reaction:", e);

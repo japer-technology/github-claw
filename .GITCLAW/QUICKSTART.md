@@ -6,7 +6,7 @@ Get a personal AI agent running in any GitHub repo in under 5 minutes. No server
 
 - A GitHub repository (new or existing)
 - [Bun](https://bun.sh) installed locally
-- An [Anthropic API key](https://console.anthropic.com/)
+- An API key from your chosen LLM provider (see [Supported providers](#supported-providers) below)
 
 ## Setup
 
@@ -28,10 +28,17 @@ cd .GITCLAW && bun install
 
 **3. Add your API key**
 
-In your GitHub repo, go to **Settings → Secrets and variables → Actions** and create a secret:
+In your GitHub repo, go to **Settings → Secrets and variables → Actions** and create a secret for your chosen provider:
 
-- **Name**: `ANTHROPIC_API_KEY`
-- **Value**: your Anthropic API key
+| Provider | Secret name | Where to get it |
+|----------|------------|-----------------|
+| Anthropic | `ANTHROPIC_API_KEY` | [console.anthropic.com](https://console.anthropic.com/) |
+| OpenAI | `OPENAI_API_KEY` | [platform.openai.com](https://platform.openai.com/) |
+| Google Gemini | `GEMINI_API_KEY` | [aistudio.google.com](https://aistudio.google.com/) |
+| xAI (Grok) | `XAI_API_KEY` | [console.x.ai](https://console.x.ai/) |
+| DeepSeek (via OpenRouter) | `OPENROUTER_API_KEY` | [openrouter.ai](https://openrouter.ai/) |
+
+Then reference the secret in your workflow (`.github/workflows/agent.yml`) as an environment variable in the **Run** step.
 
 **4. Commit and push**
 
@@ -80,6 +87,9 @@ This is optional. The agent works without hatching, but it's more fun with a per
 
 **Change the model** — edit `.GITCLAW/.pi/settings.json`:
 
+<details>
+<summary><strong>Anthropic (default)</strong></summary>
+
 ```json
 {
   "defaultProvider": "anthropic",
@@ -88,9 +98,99 @@ This is optional. The agent works without hatching, but it's more fun with a per
 }
 ```
 
+Requires `ANTHROPIC_API_KEY`.
+</details>
+
+<details>
+<summary><strong>OpenAI — GPT-5.3 Codex Spark</strong></summary>
+
+```json
+{
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-5.3-codex-spark",
+  "defaultThinkingLevel": "medium"
+}
+```
+
+Requires `OPENAI_API_KEY`.
+</details>
+
+<details>
+<summary><strong>OpenAI — GPT-5.3 Codex</strong></summary>
+
+```json
+{
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-5.3-codex",
+  "defaultThinkingLevel": "medium"
+}
+```
+
+Requires `OPENAI_API_KEY`. Full-featured coding model with 400k context window.
+</details>
+
+<details>
+<summary><strong>DeepSeek (via OpenRouter)</strong></summary>
+
+```json
+{
+  "defaultProvider": "openrouter",
+  "defaultModel": "deepseek/deepseek-r1",
+  "defaultThinkingLevel": "medium"
+}
+```
+
+Requires `OPENROUTER_API_KEY`.
+</details>
+
+<details>
+<summary><strong>xAI — Grok</strong></summary>
+
+```json
+{
+  "defaultProvider": "xai",
+  "defaultModel": "grok-3",
+  "defaultThinkingLevel": "medium"
+}
+```
+
+Requires `XAI_API_KEY`.
+</details>
+
+<details>
+<summary><strong>Google Gemini</strong></summary>
+
+```json
+{
+  "defaultProvider": "google",
+  "defaultModel": "gemini-2.5-pro",
+  "defaultThinkingLevel": "medium"
+}
+```
+
+Requires `GEMINI_API_KEY`.
+</details>
+
 **Make it read-only** — add `--tools read,grep,find,ls` to the agent args in `lifecycle/main.ts`.
 
 **Filter by label** — edit `.github/workflows/agent.yml` to only trigger on issues with a specific label.
+
+## Supported providers
+
+`.pi` supports a wide range of LLM providers out of the box. Set `defaultProvider` and `defaultModel` in `.GITCLAW/.pi/settings.json` and add the matching API key to your workflow:
+
+| Provider | `defaultProvider` | Example model | API key env var |
+|----------|-------------------|---------------|-----------------|
+| Anthropic | `anthropic` | `claude-sonnet-4-20250514` | `ANTHROPIC_API_KEY` |
+| OpenAI | `openai` | `gpt-5.3-codex`, `gpt-5.3-codex-spark` | `OPENAI_API_KEY` |
+| Google Gemini | `google` | `gemini-2.5-pro`, `gemini-2.5-flash` | `GEMINI_API_KEY` |
+| xAI (Grok) | `xai` | `grok-3`, `grok-3-mini` | `XAI_API_KEY` |
+| DeepSeek | `openrouter` | `deepseek/deepseek-r1`, `deepseek/deepseek-chat` | `OPENROUTER_API_KEY` |
+| Mistral | `mistral` | `mistral-large-latest` | `MISTRAL_API_KEY` |
+| Groq | `groq` | `deepseek-r1-distill-llama-70b` | `GROQ_API_KEY` |
+| OpenRouter | `openrouter` | any model on [openrouter.ai](https://openrouter.ai/) | `OPENROUTER_API_KEY` |
+
+> **Tip:** The `pi` agent supports many more providers and models. Run `pi --help` or see the [pi-mono docs](https://github.com/badlogic/pi-mono) for the full list.
 
 ## Next steps
 

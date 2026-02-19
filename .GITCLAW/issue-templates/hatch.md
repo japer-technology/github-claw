@@ -1,3 +1,5 @@
+# GITCLAW
+
 ---
 name: "🥚 Hatch"
 about: "Bootstrap a new agent identity"

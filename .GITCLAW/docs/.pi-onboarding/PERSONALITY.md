@@ -1,4 +1,10 @@
-# .pi Personality & Identity
+# 🦞 GITCLAW .pi Personality & Identity
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/.GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 How the agent becomes *someone* — identity, hatching, continuity, and the philosophy behind it all.
 

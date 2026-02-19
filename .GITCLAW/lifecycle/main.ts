@@ -5,6 +5,7 @@ const gitclawDir = resolve(import.meta.dir, "..");
 const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH!, "utf-8"));
 const eventName = process.env.GITHUB_EVENT_NAME!;
 const repo = process.env.GITHUB_REPOSITORY!;
+const defaultBranch = event.repository?.default_branch ?? "main";
 const issueNumber: number = event.issue.number;
 
 async function run(cmd: string[], opts?: { stdin?: any }): Promise<{ exitCode: number; stdout: string }> {
@@ -114,10 +115,10 @@ try {
   }
 
   for (let i = 1; i <= 3; i++) {
-    const push = await run(["git", "push", "origin", "main"]);
+    const push = await run(["git", "push", "origin", `HEAD:${defaultBranch}`]);
     if (push.exitCode === 0) break;
     console.log(`Push failed, rebasing and retrying (${i}/3)...`);
-    await run(["git", "pull", "--rebase", "origin", "main"]);
+    await run(["git", "pull", "--rebase", "origin", defaultBranch]);
   }
 
   // --- Comment on issue ---

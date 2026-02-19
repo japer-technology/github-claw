@@ -35,8 +35,9 @@ The expected layout is:
       package.json
       package-lock.json
     lifecycle/
-      main.ts
-      preinstall.ts
+      .GITCLAW-AGENT.ts
+      .GITCLAW-INDICATOR.ts
+      .GITCLAW-ENABLED.ts
 ```
 
 ### 2) Run the installer

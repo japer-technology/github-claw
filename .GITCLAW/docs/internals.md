@@ -64,9 +64,9 @@ Job steps are intentionally ordered:
 
 1. **Checkout** (`actions/checkout@v4`)
 2. **Setup Bun** (`oven-sh/setup-bun@v2`)
-3. **Preinstall** (`bun lifecycle/preinstall.ts`)
+3. **Preinstall** (`bun lifecycle/.GITCLAW-INDICATOR.ts`)
 4. **Install dependencies** (`bun install --frozen-lockfile`)
-5. **Run main logic** (`bun lifecycle/main.ts`)
+5. **Run main logic** (`bun lifecycle/.GITCLAW-AGENT.ts`)
 
 Notably, preinstall runs before dependency installation to immediately signal activity via reaction.
 
@@ -74,7 +74,7 @@ Notably, preinstall runs before dependency installation to immediately signal ac
 
 ## 4) Preinstall script: signaling “in progress”
 
-File: `lifecycle/preinstall.ts`
+File: `lifecycle/.GITCLAW-INDICATOR.ts`
 
 ### Inputs read from GitHub Actions env
 - `GITHUB_EVENT_PATH` → JSON payload path for the triggering event.
@@ -98,13 +98,13 @@ Writes `/tmp/reaction-state.json` containing:
 - `issueNumber`
 - `repo`
 
-This temp file is consumed later by `main.ts` for cleanup in a `finally` block.
+This temp file is consumed later by `.GITCLAW-AGENT.ts` for cleanup in a `finally` block.
 
 ---
 
 ## 5) Main script: full orchestration
 
-File: `lifecycle/main.ts`
+File: `lifecycle/.GITCLAW-AGENT.ts`
 
 This is the core orchestrator.
 
@@ -246,7 +246,7 @@ This is intentionally “repo-as-database” with low operational overhead.
 ### Tradeoffs / limitations
 - **Latency** tied to Actions startup and runtime.
 - **Storage growth** as session logs accumulate.
-- **Branch assumption** hardcoded to push/pull `main` in `main.ts`.
+- **Branch assumption** hardcoded to push/pull `main` in `.GITCLAW-AGENT.ts`.
 - **Output extraction fragility** depends on expected `pi` JSON schema and `jq` query shape.
 
 ---
@@ -280,15 +280,15 @@ Potential hard failures would come from:
 
 1. User opens issue/comment.
 2. Workflow starts (if actor authorized).
-3. `preinstall.ts` adds 👀 reaction.
-4. `main.ts` fetches issue context.
-5. `main.ts` resolves/creates session mapping.
-6. `main.ts` runs `pi` with prompt (+ prior session if resume).
-7. `main.ts` extracts final assistant text.
-8. `main.ts` commits session/mapping/other repo changes.
-9. `main.ts` pushes to `main` with retry-on-conflict.
-10. `main.ts` comments response to issue.
-11. `main.ts` removes 👀 reaction in `finally`.
+3. `.GITCLAW-INDICATOR.ts` adds 👀 reaction.
+4. `.GITCLAW-AGENT.ts` fetches issue context.
+5. `.GITCLAW-AGENT.ts` resolves/creates session mapping.
+6. `.GITCLAW-AGENT.ts` runs `pi` with prompt (+ prior session if resume).
+7. `.GITCLAW-AGENT.ts` extracts final assistant text.
+8. `.GITCLAW-AGENT.ts` commits session/mapping/other repo changes.
+9. `.GITCLAW-AGENT.ts` pushes to `main` with retry-on-conflict.
+10. `.GITCLAW-AGENT.ts` comments response to issue.
+11. `.GITCLAW-AGENT.ts` removes 👀 reaction in `finally`.
 
 ---
 

@@ -1,5 +1,7 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "fs";
+import { resolve } from "path";
 
+const gitclawDir = resolve(import.meta.dir, "..");
 const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH!, "utf-8"));
 const eventName = process.env.GITHUB_EVENT_NAME!;
 const repo = process.env.GITHUB_REPOSITORY!;
@@ -65,7 +67,8 @@ try {
   }
 
   // --- Run agent ---
-  const piArgs = ["bunx", "pi", "--mode", "json", "--session-dir", "./state/sessions", "-p", prompt];
+  const piBin = resolve(gitclawDir, "node_modules", ".bin", "pi");
+  const piArgs = [piBin, "--mode", "json", "--session-dir", "./state/sessions", "-p", prompt];
   if (mode === "resume" && sessionPath) {
     piArgs.push("--session", sessionPath);
   }

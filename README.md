@@ -28,12 +28,42 @@ state/
 
 Since sessions are in git, the agent can grep its own history and edit or summarize past conversations.
 
-## Setup
+## Setup — Add to Any Repo
 
-1. **Fork this repo**
-2. **Add your Anthropic API key** - go to **Settings → Secrets and variables → Actions** and create a secret named `ANTHROPIC_API_KEY`.
-3. **Open an issue** - the agent starts automatically.
-4. **Comment on the issue** - the agent resumes where it left off.
+gitclaw lives entirely inside a `.GITCLAW` folder that you drop into your repository.
+
+1. **Copy the `.GITCLAW` folder** into your repo's root.
+2. **Run the install script** to set up workflows and templates:
+   ```bash
+   bun .GITCLAW/install.ts
+   ```
+3. **Install dependencies:**
+   ```bash
+   cd .GITCLAW && bun install
+   ```
+4. **Add your Anthropic API key** — go to **Settings → Secrets and variables → Actions** and create a secret named `ANTHROPIC_API_KEY`.
+5. **Commit and push** the changes.
+6. **Open an issue** — the agent starts automatically.
+
+The install script copies the workflow, issue template, and agent config into the right places (`.github/`, `.pi/`, `AGENTS.md`). Everything gitclaw needs to run lives inside `.GITCLAW/`.
+
+### What's inside `.GITCLAW/`
+
+```
+.GITCLAW/
+  install.ts              # Setup script — installs workflows & templates
+  lifecycle/
+    main.ts               # Core agent orchestrator
+    preinstall.ts          # Adds 👀 reaction on issue activity
+  workflows/
+    agent.yml             # GitHub Actions workflow template
+  issue-templates/
+    hatch.md              # Issue template for bootstrapping agent identity
+  .pi/                    # Agent personality & skills config
+  AGENTS.md               # Agent identity file
+  package.json            # Dependencies
+  bun.lock                # Lockfile
+```
 
 ## Security
 
@@ -45,7 +75,7 @@ If you plan to use gitclaw for anything private, **make the repo private**. Publ
 
 Edit `.github/workflows/agent.yml` to customize:
 
-- **Model:** Add `--provider` and `--model` flags to the `bunx pi` command.
+- **Model:** Add `--provider` and `--model` flags to the `pi` command.
 - **Tools:** Restrict with `--tools read,grep,find,ls` for read-only analysis.
 - **Thinking:** Add `--thinking high` for harder tasks.
 - **Trigger:** Adjust the `on:` block to filter by labels, assignees, etc.

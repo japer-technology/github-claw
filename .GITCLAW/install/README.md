@@ -8,7 +8,7 @@
   </picture>
 </p>
 
-The `install/` directory contains the **installable payload** for gitclaw.
+The `install/` directory contains the **installable payload** for `.GITCLAW`
 
 Everything in this folder is intentionally flat (no nested subfolders) so it can be copied, vendored, or inspected quickly.
 

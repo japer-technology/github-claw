@@ -282,11 +282,14 @@ try {
 
   // ── Extract final assistant text ─────────────────────────────────────────────
   // The `pi` agent writes newline-delimited JSON events.  We reverse the file
-  // with `tac` so that `jq` finds the LAST `message_end` event first (most
-  // recent = the reply we want), then extract its text content.
+  // with `tac` so the most recent events appear first in the `jq` array.  We
+  // then search for the most recent `message_end` where the role is `assistant`
+  // AND the content contains at least one `text` block.  This correctly handles
+  // cases where the final event has empty content (e.g., a 400 API error after
+  // a successful tool call) by falling back to an earlier assistant message.
   const tac = Bun.spawn(["tac", "/tmp/agent-raw.jsonl"], { stdout: "pipe" });
   const jq = Bun.spawn(
-    ["jq", "-r", "-s", '[ .[] | select(.type == "message_end") ] | .[0].message.content[] | select(.type == "text") | .text'],
+    ["jq", "-r", "-s", '[ .[] | select(.type == "message_end" and .message.role == "assistant") | select((.message.content // []) | map(select(.type == "text")) | length > 0) ] | .[0].message.content[] | select(.type == "text") | .text'],
     { stdin: tac.stdout, stdout: "pipe" }
   );
   const agentText = await new Response(jq.stdout).text();
@@ -339,7 +342,7 @@ try {
   const trimmedText = agentText.trim();
   const commentBody = trimmedText.length > 0
     ? trimmedText.slice(0, MAX_COMMENT_LENGTH)
-    : `⚠️ The agent did not produce a response. Check the [workflow run logs](https://github.com/${repo}/actions) for details.`;
+    : `✅ The agent ran successfully but did not produce a text response. Check the repository for any file changes that were made.\n\nFor full details, see the [workflow run logs](https://github.com/${repo}/actions).`;
   await gh("issue", "comment", String(issueNumber), "--body", commentBody);
 
 } finally {

@@ -18,7 +18,12 @@ on:
         type: string
   push:
     paths:
-      - '.GITCLAW/**'
+      - '.github/workflows/.GITCLAW-INSTALLER.yml'
+  workflow_run:
+    workflows:
+      - 'GITCLAW Agent'
+    types:
+      - completed
 
 permissions:
   contents: write
@@ -213,6 +218,17 @@ jobs:
               chmod +x "$dest"
               echo "::notice::Installed script → $dest"
             done
+          fi
+
+      - name: Mark installation complete
+        run: |
+          if [ -f ".GITCLAW/.GITCLAW-NOT-INSTALLED.md" ]; then
+            mv ".GITCLAW/.GITCLAW-NOT-INSTALLED.md" ".GITCLAW/.GITCLAW-INSTALLED.md"
+            echo "::notice::Renamed .GITCLAW-NOT-INSTALLED.md → .GITCLAW-INSTALLED.md"
+          elif [ -f ".GITCLAW/.GITCLAW-INSTALLED.md" ]; then
+            echo "::notice::.GITCLAW-INSTALLED.md already exists — install verified"
+          else
+            echo "::warning::Neither .GITCLAW-NOT-INSTALLED.md nor .GITCLAW-INSTALLED.md found"
           fi
 
       - name: Check for changes

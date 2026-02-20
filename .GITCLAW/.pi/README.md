@@ -1,6 +1,6 @@
 # .GITCLAW 🦞 .PI
 
-### The magic resides here
+### Pi creates a persistent, opinionated agent with memory and relationships.
 
 <p align="center">
   <picture>

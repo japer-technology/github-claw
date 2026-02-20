@@ -1,4 +1,4 @@
-# .GITCLAW 🦞 .PI
+# .GITCLAW 🦞 Relies on .Pi 
 
 ### Pi creates a persistent, opinionated agent with memory and relationships.
 

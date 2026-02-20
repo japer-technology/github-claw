@@ -85,14 +85,14 @@ bun install
 
 ### 6) (Optional) Enable the automated installer workflow
 
-`.GITCLAW-INSTALLER.yml` is a reusable GitHub Actions workflow that bootstraps gitclaw automatically whenever changes to `.GITCLAW/**` are pushed, or on demand via `workflow_dispatch`.
+`GITCLAW-INSTALLER.yml` is a reusable GitHub Actions workflow that bootstraps gitclaw automatically whenever changes to `.GITCLAW/**` are pushed, or on demand via `workflow_dispatch`.
 
 To activate it:
 
-1. Copy `.GITCLAW/.GITCLAW-INSTALLER.yml` into your `.github/workflows/` folder:
+1. Copy `.GITCLAW/GITCLAW-INSTALLER.yml` into your `.github/workflows/` folder:
 
    ```bash
-   cp .GITCLAW/.GITCLAW-INSTALLER.yml .github/workflows/.GITCLAW-INSTALLER.yml
+   cp .GITCLAW/GITCLAW-INSTALLER.yml .github/workflows/.GITCLAW-INSTALLER.yml
    ```
 
 2. Commit and push:

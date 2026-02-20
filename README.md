@@ -1,4 +1,4 @@
-# japer-technology/gitclaw
+# japer-technology/gitclaw 🦞 by Eric Mourant
 
 <p align="center">
   <picture>
@@ -6,6 +6,6 @@
   </picture>
 </p>
 
-See: [Quick Start](QUICKSTART.md)
+See: [Quick Start](/docs/QUICKSTART.md)
 
 Every issue becomes a chat thread with an AI agent. Conversation history is committed to git, giving the agent long-term memory across sessions. It can search prior context, edit or summarize past conversations, and all changes are versioned.

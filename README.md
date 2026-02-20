@@ -1,4 +1,4 @@
-# japer-technology/gitclaw 🦞 by Eric Mourant
+# japer-technology/gitclaw 🦞GitHub AI Agent
 
 <p align="center">
   <picture>

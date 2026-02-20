@@ -1,4 +1,6 @@
-# 🦞 GITCLAW uses .PI
+# .GITCLAW 🦞 .PI
+
+### The magic resides here
 
 <p align="center">
   <picture>

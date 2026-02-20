@@ -1,6 +1,13 @@
-# GitClaw — Possibilities
+# .GITCLAW 🦞 Possibilities
 
-> _A survey of what GitClaw is, what it could become, and the wider design space it opens up._
+### A survey of what GitClaw is, could become, and the wider design space it opens up
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/.GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
+
 
 ---
 

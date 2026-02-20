@@ -8,9 +8,6 @@
   </picture>
 </p>
 
-
----
-
 ## 1. What GitClaw Already Is
 
 GitClaw is a zero-infrastructure AI coding agent that lives entirely inside a GitHub repository. It runs through GitHub Issues and Actions, stores every conversation in git, and needs nothing beyond a single `.GITCLAW/` folder and an LLM API key. That simplicity is its superpower.

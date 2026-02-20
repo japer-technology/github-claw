@@ -1,4 +1,4 @@
-# japer-technology/gitclaw 🦞 OpenClaw's Pi Heart Exposed
+# japer-technology/gitclaw
 
 <p align="center">
   <picture>
@@ -6,6 +6,6 @@
   </picture>
 </p>
 
-### See: [Quick Start](/.GITCLAW/GITCLAW-QUICKSTART.md), [Possibilities](/.GITCLAW/docs/possibilities.md) and [Road Map](/.GITCLAW/docs/roadmap.md)
+### [🦞Quick Start](/.GITCLAW/GITCLAW-QUICKSTART.md) [🦞Internals](/.GITCLAW/docs/internals.md) [🦞Possibilities](/.GITCLAW/docs/possibilities.md) [🦞Road Map](/.GITCLAW/docs/roadmap.md)
 
 Every issue becomes a chat thread with an AI agent. Conversation history is committed to git, giving the agent long-term memory across sessions. It can search prior context, edit or summarize past conversations, and all changes are versioned.

@@ -1,6 +1,6 @@
 # .GITCLAW 🦞 Workflow Installer
 
-### Move /.GITCLAW/GITHUB-INSTALLER.yml to /.github/workflows to auto-install
+### Move /.GITCLAW/GITCLAW-INSTALLER.yml to /.github/workflows to auto-install
 
 <p align="center">
   <picture>

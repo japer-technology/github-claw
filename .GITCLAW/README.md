@@ -8,8 +8,6 @@
 
 ### [🦞Quick Start](GITCLAW-QUICKSTART.md) · [🦞Internals](docs/GITCLAW-Internal-Mechanics.md) · [🦞Possibilities](docs/GITCLAW-Possibilities.md) · [🦞Road Map](docs/GITCLAW-Roadmap.md) · [🦞The Idea](docs/GITCLAW-The-Idea.md)
 
----
-
 A personal AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.GITCLAW` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
 
 > **New here?** Check the [Quick Start](GITCLAW-QUICKSTART.md) to get running in under 5 minutes.

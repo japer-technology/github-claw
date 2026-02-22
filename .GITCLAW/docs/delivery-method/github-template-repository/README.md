@@ -1,6 +1,12 @@
-# GitHub Template Repository
+# .GITCLAW 🦞 GitHub Template Repository
 
-> Mark the gitclaw repository (or a dedicated starter repo) as a template — users click "Use this template" and get a new repo with gitclaw pre-installed.
+### Mark the gitclaw repository (or a dedicated starter repo) as a template — users click "Use this template" and get a new repo with gitclaw pre-installed.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

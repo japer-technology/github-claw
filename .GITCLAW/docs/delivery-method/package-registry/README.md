@@ -1,6 +1,12 @@
-# Package Registry (npm / GitHub Packages)
+# .GITCLAW 🦞 Package Registry (npm / GitHub Packages)
 
-> Publish the `.GITCLAW/` folder as a versioned package on npm or GitHub Packages — leveraging the mature package ecosystem for distribution and updates.
+### Publish the `.GITCLAW/` folder as a versioned package on npm or GitHub Packages — leveraging the mature package ecosystem for distribution and updates.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

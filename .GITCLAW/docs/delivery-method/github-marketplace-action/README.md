@@ -1,6 +1,12 @@
-# GitHub Marketplace Action
+# .GITCLAW 🦞 GitHub Marketplace Action
 
-> A published GitHub Action that bootstraps gitclaw when added to any workflow — users add one YAML file, the action handles everything else.
+### A published GitHub Action that bootstraps gitclaw when added to any workflow — users add one YAML file, the action handles everything else.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

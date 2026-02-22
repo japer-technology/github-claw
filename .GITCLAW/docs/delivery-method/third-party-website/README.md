@@ -1,6 +1,12 @@
-# Third-Party Website
+# .GITCLAW 🦞 Third-Party Website
 
-> A dedicated website (e.g., `gitclaw.dev`) that serves as a full-featured installation hub, management dashboard, and community center for gitclaw.
+### A dedicated website (e.g., `gitclaw.dev`) that serves as a full-featured installation hub, management dashboard, and community center for gitclaw.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

@@ -163,11 +163,16 @@ These are the highest-impact, lowest-complexity guardrails that should be in pla
 
 Instead of pushing directly to `main`, have the agent commit to a branch and open a pull request:
 
-```yaml
-# In GITCLAW-AGENT.ts, change push target:
-# Before: git push origin HEAD:main
-# After:  git push origin HEAD:gitclaw/issue-N
-#         gh pr create --base main --head gitclaw/issue-N
+```typescript
+// In GITCLAW-AGENT.ts, change push target from default branch to a per-issue branch:
+const branchName = `gitclaw/issue-${issueNumber}`;
+
+// Before: await run(["git", "push", "origin", `HEAD:${defaultBranch}`]);
+// After:
+await run(["git", "push", "origin", `HEAD:${branchName}`]);
+await gh("pr", "create", "--base", defaultBranch, "--head", branchName,
+  "--title", `gitclaw: work on issue #${issueNumber}`,
+  "--body", `Automated changes from gitclaw agent for #${issueNumber}`);
 ```
 
 **Why**: Every agent change gets a review gate. Users can inspect, approve, or reject changes before they land. This is the single most impactful guardrail.
@@ -275,7 +280,15 @@ Track recent runs and refuse to execute if the rate is excessive:
 
 ```typescript
 // In GITCLAW-AGENT.ts, before running the pi agent:
-const recentRuns = /* count runs in last hour from state */;
+// Count recent session mappings updated within the last hour from state/issues/*.json
+const issueFiles = readdirSync(issuesDir).filter(f => f.endsWith(".json"));
+const oneHourAgo = Date.now() - 60 * 60 * 1000;
+const recentRuns = issueFiles.filter(f => {
+  const mapping = JSON.parse(readFileSync(resolve(issuesDir, f), "utf-8"));
+  return new Date(mapping.updatedAt).getTime() > oneHourAgo;
+}).length;
+
+const MAX_RUNS_PER_HOUR = 20;
 if (recentRuns > MAX_RUNS_PER_HOUR) {
   await gh("issue", "comment", String(issueNumber), "--body",
     "⚠️ Rate limit reached. GitClaw will resume responding after the cooldown period.");

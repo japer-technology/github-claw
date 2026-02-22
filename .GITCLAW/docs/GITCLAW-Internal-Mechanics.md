@@ -33,7 +33,7 @@ The repository itself is used as durable state storage (`state/issues` and `stat
 
 ## 2) Triggering and access control
 
-Workflow file: `.github/workflows/agent.yml`
+Workflow file: `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`
 
 ### Events
 The workflow triggers on:

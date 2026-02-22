@@ -33,7 +33,7 @@ A minimal **22-file**, **3-commit** repo:
 
 - `.pi/` — Pi agent config (settings, skills, bootstrap)
 - `lifecycle/` — `main.ts` and `preinstall.ts`
-- `.github/workflows/agent.yml` — single workflow
+- `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` — single workflow
 - `AGENTS.md`, `README.md`, `LICENSE`, `banner.jpeg`
 - `package.json` + `bun.lock`
 

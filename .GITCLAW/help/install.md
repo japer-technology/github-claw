@@ -23,7 +23,7 @@ bun .GITCLAW/install/GITCLAW-INSTALLER.ts
 ```
 
 The installer will:
-- Create `.github/workflows/agent.yml` — the GitHub Actions workflow that triggers the agent
+- Create `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` — the GitHub Actions workflow that triggers the agent
 - Create `.github/ISSUE_TEMPLATE/hatch.md` — an issue template for personality hatching
 - Create `.GITCLAW/AGENTS.md` — the agent identity file (if not already present)
 - Add a `memory.log merge=union` rule to `.gitattributes` for conflict-free memory logging
@@ -53,7 +53,7 @@ Go to your GitHub repository **Settings → Secrets and variables → Actions �
 | Groq | `GROQ_API_KEY` | [console.groq.com](https://console.groq.com/) |
 | OpenRouter | `OPENROUTER_API_KEY` | [openrouter.ai](https://openrouter.ai/) |
 
-Make sure the secret name in your workflow (`.github/workflows/agent.yml`) matches. The default workflow template references `ANTHROPIC_API_KEY`.
+Make sure the secret name in your workflow (`.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`) matches. The default workflow template references `ANTHROPIC_API_KEY`.
 
 ### 4. Commit and push
 
@@ -78,7 +78,7 @@ You can copy `GITCLAW-INSTALLER.yml` to `.github/workflows/` and trigger the boo
 ```
 .github/
   workflows/
-    agent.yml                  # GitHub Actions workflow
+    GITCLAW-WORKFLOW-AGENT.yml                  # GitHub Actions workflow
   ISSUE_TEMPLATE/
     hatch.md                   # Personality hatching template
 .GITCLAW/

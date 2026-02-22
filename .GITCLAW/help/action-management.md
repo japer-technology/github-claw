@@ -8,7 +8,7 @@ Manage the GitHub Actions workflow that powers GitClaw. This covers the workflow
 
 ## The GitClaw Workflow
 
-GitClaw runs as a GitHub Actions workflow defined in `.github/workflows/agent.yml`. It triggers automatically when:
+GitClaw runs as a GitHub Actions workflow defined in `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`. It triggers automatically when:
 
 - A new issue is opened (`issues.opened`)
 - A comment is added to an issue (`issue_comment.created`)
@@ -60,7 +60,7 @@ This is useful when a run failed due to a transient error (e.g., API timeout, ra
 
 ### Filter by label
 
-To make the agent respond only to issues with a specific label, edit `.github/workflows/agent.yml`:
+To make the agent respond only to issues with a specific label, edit `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`:
 
 ```yaml
 on:
@@ -138,7 +138,7 @@ Also update `.GITCLAW/.pi/settings.json` to match (see [Configure](configure.md)
 If the workflow file gets corrupted or you want to reset it to the template:
 
 ```bash
-rm .github/workflows/agent.yml
+rm .github/workflows/GITCLAW-WORKFLOW-AGENT.yml
 bun .GITCLAW/install/GITCLAW-INSTALLER.ts
 ```
 
@@ -148,7 +148,7 @@ The installer copies the workflow template from `.GITCLAW/install/GITCLAW-WORKFL
 
 ### Workflow never triggers
 
-- Ensure the workflow file exists at `.github/workflows/agent.yml`
+- Ensure the workflow file exists at `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`
 - Check that the workflow is not disabled (Actions tab → select workflow → look for "Enable workflow" button)
 - Verify the trigger events match your use case (`issues.opened`, `issue_comment.created`)
 

@@ -67,8 +67,8 @@ console.log("Workflows:");
 ensureDir(resolve(repoRoot, ".github", "workflows"));
 copyIfMissing(
   resolve(bootstrapDir, "GITCLAW-WORKFLOW-AGENT.yml"),
-  resolve(repoRoot, ".github", "workflows", "agent.yml"),
-  ".github/workflows/agent.yml"
+  resolve(repoRoot, ".github", "workflows", "GITCLAW-WORKFLOW-AGENT.yml"),
+  ".github/workflows/GITCLAW-WORKFLOW-AGENT.yml"
 );
 
 // --- Issue templates --------------------------------------------------

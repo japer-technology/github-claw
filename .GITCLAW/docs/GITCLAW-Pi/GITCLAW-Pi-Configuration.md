@@ -32,7 +32,7 @@ These are the defaults used when the workflow doesn't specify overrides.
 
 ## Workflow Overrides
 
-**Location**: `.github/workflows/agent.yml`
+**Location**: `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`
 
 The workflow file is the primary place to customize runtime behavior. Edit the `pi` command in the `Run` step:
 
@@ -71,7 +71,7 @@ This creates a **read-only agent** that can analyze the repo but not modify it. 
 
 ## Workflow Triggers
 
-**Location**: `.github/workflows/agent.yml`
+**Location**: `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`
 
 The `on:` block controls when the agent activates:
 

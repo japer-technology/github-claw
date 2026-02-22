@@ -144,7 +144,7 @@ If you plan to use gitclaw for anything private, **make the repo private**. Publ
 
 **Make it read-only** — add `--tools read,grep,find,ls` to the agent args in `lifecycle/GITCLAW-AGENT.ts`.
 
-**Filter by label** — edit `.github/workflows/agent.yml` to only trigger on issues with a specific label.
+**Filter by label** — edit `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` to only trigger on issues with a specific label.
 
 **Adjust thinking level** — set `defaultThinkingLevel` to `"low"`, `"medium"`, or `"high"` in `settings.json` for different task complexities.
 

@@ -378,7 +378,7 @@ describe("Heart emoji guard", () => {
     assert.ok(guard.includes("process.exit(0)"));
   });
 
-  it("workflow runs heart guard after main guard and before indicator", () => {
+  it("workflow runs heart guard after main guard and before preinstall", () => {
     const workflow = readFile(".github/workflows/GITCLAW-WORKFLOW-AGENT.yml");
     const guardIdx = workflow.indexOf("GITCLAW-ENABLED");
     const heartGuardIdx = workflow.indexOf("GITCLAW-HEART-GUARD");

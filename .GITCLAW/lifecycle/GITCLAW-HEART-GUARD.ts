@@ -81,8 +81,8 @@ const event = JSON.parse(readFileSync(process.env.GITHUB_EVENT_PATH!, "utf-8"));
 const issueBody: string = event.issue?.body ?? "";
 
 // ─── Check for heart emoji ────────────────────────────────────────────────────
-// Match common heart emoji characters: ❤️ ❤ 🤍 💙 💚 💛 🧡 💜 🖤 🤎 💗 💖 💝 💘 💕 💞 💓 ♥️ ♥
-const heartPattern = /[\u2764\u2765\u2766]\uFE0F?|[\u{1F499}-\u{1F49F}]|[\u{1F90D}\u{1F90E}\u{1F9E1}\u{1FA76}\u{1FA77}\u{1FA78}]|\u2665\uFE0F?/u;
+// Match common heart emoji characters: ❤️ ❤ 💓 💕 💖 💗 💘 💙 💚 💛 💜 💝 💞 💟 🖤 🤍 🤎 🧡 ♥️ ♥
+const heartPattern = /\u2764\uFE0F?|[\u{1F493}-\u{1F49F}]|\u{1F5A4}|\u{1F90D}|\u{1F90E}|\u{1F9E1}|\u2665\uFE0F?/u;
 
 if (heartPattern.test(issueBody)) {
   console.log("GitClaw heart guard — ❤️ heart emoji found in issue body. Passing.");

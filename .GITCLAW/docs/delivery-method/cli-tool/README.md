@@ -1,6 +1,12 @@
-# CLI Tool (npx / bunx)
+# .GITCLAW 🦞 CLI Tool (npx / bunx)
 
-> A single command that downloads and installs gitclaw into the current directory — the developer-native way to bootstrap an AI assistant.
+### A single command that downloads and installs gitclaw into the current directory — the developer-native way to bootstrap an AI assistant.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

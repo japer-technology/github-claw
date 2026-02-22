@@ -1,6 +1,12 @@
-# Browser Extension
+# .GITCLAW 🦞 Browser Extension
 
-> A Chrome/Firefox extension that adds an "Install GitClaw" button directly to GitHub repository pages — contextual, one-click installation from where developers already work.
+### A Chrome/Firefox extension that adds an "Install GitClaw" button directly to GitHub repository pages — contextual, one-click installation from where developers already work.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

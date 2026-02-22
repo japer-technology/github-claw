@@ -1,6 +1,12 @@
-# Email-Based Delivery
+# .GITCLAW 🦞 Email-Based Delivery
 
-> Deliver gitclaw via email — attachments, magic links, or repository invitations — reaching developers through the most universal communication channel.
+### Deliver gitclaw via email — attachments, magic links, or repository invitations — reaching developers through the most universal communication channel.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

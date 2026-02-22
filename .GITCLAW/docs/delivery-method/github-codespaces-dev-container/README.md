@@ -1,6 +1,12 @@
-# GitHub Codespaces / Dev Container
+# .GITCLAW 🦞 GitHub Codespaces / Dev Container
 
-> Pre-configure gitclaw in a dev container definition — so that when a user opens a Codespace, gitclaw is automatically installed and ready to use.
+### Pre-configure gitclaw in a dev container definition — so that when a user opens a Codespace, gitclaw is automatically installed and ready to use.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

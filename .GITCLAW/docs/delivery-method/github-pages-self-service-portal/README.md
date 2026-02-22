@@ -1,6 +1,12 @@
-# GitHub Pages — Self-Service Portal
+# .GITCLAW 🦞 GitHub Pages — Self-Service Portal
 
-> A website hosted on GitHub Pages that provides a visual, guided experience for configuring and installing gitclaw into any repository.
+### A website hosted on GitHub Pages that provides a visual, guided experience for configuring and installing gitclaw into any repository.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

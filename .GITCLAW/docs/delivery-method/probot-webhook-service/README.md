@@ -1,6 +1,12 @@
-# Probot / Webhook Service
+# .GITCLAW 🦞 Probot / Webhook Service
 
-> A hosted webhook service that responds to GitHub events to install and manage gitclaw — event-driven automation at its finest.
+### A hosted webhook service that responds to GitHub events to install and manage gitclaw — event-driven automation at its finest.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

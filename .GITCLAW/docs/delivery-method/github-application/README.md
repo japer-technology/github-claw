@@ -1,6 +1,12 @@
-# GitHub Application (OAuth / GitHub App)
+# .GITCLAW 🦞 GitHub Application (OAuth / GitHub App)
 
-> A registered GitHub App that installs gitclaw into any repository with a single click — no CLI, no fork, no manual file copying.
+### A registered GitHub App that installs gitclaw into any repository with a single click — no CLI, no fork, no manual file copying.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

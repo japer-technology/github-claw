@@ -1,6 +1,12 @@
-# Fork / Import + Installer
+# .GITCLAW 🦞 Fork / Import + Installer
 
-> The foundational delivery method — manually copy the `.GITCLAW/` folder into your repository and run the installer script.
+### The foundational delivery method — manually copy the `.GITCLAW/` folder into your repository and run the installer script.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

@@ -1,6 +1,12 @@
-# Git Submodule / Subtree
+# .GITCLAW 🦞 Git Submodule / Subtree
 
-> Include gitclaw as a git submodule or subtree rather than copying files — enabling trivial updates and clear separation between gitclaw code and the host repository.
+### Include gitclaw as a git submodule or subtree rather than copying files — enabling trivial updates and clear separation between gitclaw code and the host repository.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

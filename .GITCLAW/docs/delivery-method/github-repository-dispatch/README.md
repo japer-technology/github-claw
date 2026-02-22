@@ -1,6 +1,12 @@
-# GitHub Repository Dispatch / API-Driven
+# .GITCLAW 🦞 GitHub Repository Dispatch / API-Driven
 
-> Trigger gitclaw installation remotely via the GitHub API — from any system that can make HTTP requests.
+### Trigger gitclaw installation remotely via the GitHub API — from any system that can make HTTP requests.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

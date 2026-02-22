@@ -20,3 +20,4 @@
 | [delivery-method/](delivery-method/README.md) | Deep-dive documentation for each individual delivery method |
 | [GITCLAW-Cloud-vs-Local.md](GITCLAW-Cloud-vs-Local.md) | Cloud (GitHub Actions) vs Local (pi CLI) — UX, UI, and capability differences |
 | [GITCLAW-Pi/](GITCLAW-Pi/GITCLAW-Pi-README.md) | Dedicated documentation for the .pi agent configuration system |
+| [GITCLAW-Installation-Guardrails.md](GITCLAW-Installation-Guardrails.md) | Deep analysis of post-installation power and guardrail recommendations for release |

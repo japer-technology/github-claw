@@ -61,7 +61,7 @@ Check that all of the following are in place:
 | Check | How to Verify |
 |-------|---------------|
 | Sentinel file exists | `ls .GITCLAW/GITCLAW-ENABLED.md` — file should be present |
-| Workflow exists | `ls .github/workflows/agent.yml` — file should be present |
+| Workflow exists | `ls .github/workflows/GITCLAW-WORKFLOW-AGENT.yml` — file should be present |
 | Workflow is active | Go to **Actions** tab — workflow should not show "This workflow is disabled" |
 | API key is set | Go to **Settings → Secrets and variables → Actions** — the provider secret should be listed |
 

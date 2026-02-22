@@ -216,7 +216,7 @@ Add a post-run validation step that checks whether the agent modified its own co
       ".GITCLAW/.pi/settings.json"
       ".GITCLAW/lifecycle/GITCLAW-AGENT.ts"
       ".GITCLAW/lifecycle/GITCLAW-ENABLED.ts"
-      ".github/workflows/agent.yml"
+      ".github/workflows/GITCLAW-WORKFLOW-AGENT.yml"
     )
     for f in "${PROTECTED_FILES[@]}"; do
       if git diff --name-only HEAD~1 HEAD | grep -q "^${f}$"; then

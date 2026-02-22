@@ -51,7 +51,7 @@ When you disable GitClaw, everything is preserved:
 - ✅ Agent configuration (`.GITCLAW/.pi/settings.json`)
 - ✅ Agent personality (`AGENTS.md`)
 - ✅ Conversation history (`.GITCLAW/state/`)
-- ✅ GitHub Actions workflow (`.github/workflows/agent.yml`)
+- ✅ GitHub Actions workflow (`.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`)
 - ✅ Issue templates
 - ✅ API key secrets
 

@@ -54,7 +54,7 @@ bun .GITCLAW/install/GITCLAW-INSTALLER.ts
 cd .GITCLAW && bun install
 ```
 
-> The installer never overwrites existing files — it only creates missing ones. This means your existing `agent.yml` workflow will remain as-is. If the workflow template has changed, delete `.github/workflows/agent.yml` before running the installer to get the latest version.
+> The installer never overwrites existing files — it only creates missing ones. This means your existing `GITCLAW-WORKFLOW-AGENT.yml` workflow will remain as-is. If the workflow template has changed, delete `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` before running the installer to get the latest version.
 
 ### 5. Commit and push
 
@@ -72,7 +72,7 @@ To completely reset GitClaw, including all conversation history:
 
 ```bash
 rm -rf .GITCLAW
-rm -f .github/workflows/agent.yml
+rm -f .github/workflows/GITCLAW-WORKFLOW-AGENT.yml
 rm -f .github/ISSUE_TEMPLATE/hatch.md
 ```
 
@@ -106,7 +106,7 @@ If only the GitHub Actions workflow is broken or outdated:
 
 ```bash
 # Remove the old workflow
-rm .github/workflows/agent.yml
+rm .github/workflows/GITCLAW-WORKFLOW-AGENT.yml
 
 # Re-run the installer to regenerate it from the template
 bun .GITCLAW/install/GITCLAW-INSTALLER.ts

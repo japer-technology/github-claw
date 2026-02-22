@@ -15,7 +15,7 @@ Customize the LLM provider, model, agent personality, thinking level, tool acces
 | `.GITCLAW/.pi/APPEND_SYSTEM.md` | System prompt loaded every session |
 | `.GITCLAW/.pi/BOOTSTRAP.md` | First-run identity prompt (used during hatching) |
 | `.GITCLAW/.pi/skills/` | Modular skill packages |
-| `.github/workflows/agent.yml` | Workflow triggers, permissions, and environment variables |
+| `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` | Workflow triggers, permissions, and environment variables |
 
 ## Change the LLM Provider and Model
 
@@ -232,7 +232,7 @@ API keys are stored as GitHub repository secrets and passed to the workflow as e
 
 ### Reference the secret in the workflow
 
-In `.github/workflows/agent.yml`, add the secret as an environment variable in the **Run** step:
+In `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`, add the secret as an environment variable in the **Run** step:
 
 ```yaml
 - name: Run

@@ -38,7 +38,7 @@ GitHub Issue → GitHub Actions → lifecycle/GITCLAW-AGENT.ts → pi agent → 
 ```
 
 1. A user opens an issue or comments on one.
-2. GitHub Actions triggers the `agent.yml` workflow.
+2. GitHub Actions triggers the `GITCLAW-WORKFLOW-AGENT.yml` workflow.
 3. `lifecycle/GITCLAW-AGENT.ts` resolves the session (new or resumed), builds a prompt, and launches the `pi` agent binary.
 4. The `pi` agent reads `.pi/settings.json` for LLM config, loads `.pi/APPEND_SYSTEM.md` as the system prompt, and activates relevant skills.
 5. The agent reads `.GITCLAW/AGENTS.md` to learn who it is.

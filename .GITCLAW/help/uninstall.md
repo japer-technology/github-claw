@@ -21,7 +21,7 @@ This removes everything: the agent code, configuration, session history, state, 
 ### 2. Remove the GitHub Actions workflow
 
 ```bash
-rm .github/workflows/agent.yml
+rm .github/workflows/GITCLAW-WORKFLOW-AGENT.yml
 ```
 
 This stops the agent from being triggered on new issues or comments.
@@ -64,7 +64,7 @@ git push
 
 If you want to stop the agent but preserve conversation history for reference:
 
-1. Delete `.github/workflows/agent.yml` — this prevents the agent from running
+1. Delete `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` — this prevents the agent from running
 2. Optionally delete `.GITCLAW/GITCLAW-ENABLED.md` — this is the fail-safe disable (see [Disable](disable.md))
 3. Keep `.GITCLAW/state/` for historical sessions
 

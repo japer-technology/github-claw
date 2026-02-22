@@ -49,7 +49,7 @@ What GitClaw already does today:
 
 Extend the Actions workflow to listen on `pull_request` and `pull_request_review` events in addition to issues.
 
-- [ ] Add `pull_request: [opened, synchronize, reopened]` trigger to `agent.yml`
+- [ ] Add `pull_request: [opened, synchronize, reopened]` trigger to `GITCLAW-WORKFLOW-AGENT.yml`
 - [ ] Add `pull_request_review: [submitted]` and `pull_request_review_comment: [created]` triggers
 - [ ] Map PR number → session (parallel to the existing issue → session model)
 - [ ] Store PR sessions under `state/pull-requests/<pr>.json`
@@ -410,7 +410,7 @@ Each event source (issue, PR, discussion) maps to a session via the same pointer
 
 ### Workflow file evolution
 
-The single `agent.yml` workflow grows to handle multiple event types:
+The single `GITCLAW-WORKFLOW-AGENT.yml` workflow grows to handle multiple event types:
 
 ```yaml
 on:

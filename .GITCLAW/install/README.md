@@ -15,7 +15,7 @@ Everything in this folder is intentionally flat (no nested subfolders) so it can
 ## Files in this folder
 
 - `GITCLAW-INSTALLER.ts` — one-time installer script.
-- `GITCLAW-WORKFLOW-AGENT.yml` — GitHub Actions workflow template copied to `.github/workflows/agent.yml`.
+- `GITCLAW-WORKFLOW-AGENT.yml` — GitHub Actions workflow template copied to `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`.
 - `GITCLAW-TEMPLATE-HATCH.md` — issue template copied to `.github/ISSUE_TEMPLATE/hatch.md`.
 - `GITCLAW-AGENTS.md` — default agent identity/instructions copied to `.GITCLAW/AGENTS.md`.
 - `package.json` and `package-lock.json` — runtime dependencies for the scripts under `.GITCLAW/`.
@@ -59,7 +59,7 @@ The installer is **non-destructive**:
 
 The script installs the following resources:
 
-1. `.GITCLAW/install/GITCLAW-WORKFLOW-AGENT.yml` → `.github/workflows/agent.yml`
+1. `.GITCLAW/install/GITCLAW-WORKFLOW-AGENT.yml` → `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`
 2. `.GITCLAW/install/GITCLAW-TEMPLATE-HATCH.md` → `.github/ISSUE_TEMPLATE/hatch.md`
 3. `.GITCLAW/install/GITCLAW-AGENTS.md` → `.GITCLAW/AGENTS.md`
 4. Ensures `.gitattributes` contains:

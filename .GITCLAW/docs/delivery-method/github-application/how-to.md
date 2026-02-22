@@ -137,15 +137,23 @@ Create the webhook handler that listens for `installation` and `installation_rep
 3. **Authenticate as the installation** by generating a JWT from your private key, then exchanging it for an installation access token.
 4. **Bootstrap each repository** (see Part 3).
 
-Example structure (Node.js):
+Example structure (Node.js). In production, validate that all required environment variables are present before initializing the app:
 
 ```js
 import { App } from "@octokit/app";
 
+const appId = process.env.APP_ID;
+const privateKey = process.env.PRIVATE_KEY;
+const webhookSecret = process.env.WEBHOOK_SECRET;
+
+if (!appId || !privateKey || !webhookSecret) {
+  throw new Error("Missing required environment variables: APP_ID, PRIVATE_KEY, WEBHOOK_SECRET");
+}
+
 const app = new App({
-  appId: process.env.APP_ID,
-  privateKey: process.env.PRIVATE_KEY,
-  webhooks: { secret: process.env.WEBHOOK_SECRET },
+  appId,
+  privateKey,
+  webhooks: { secret: webhookSecret },
 });
 
 app.webhooks.on("installation.created", async ({ payload }) => {
@@ -304,7 +312,15 @@ const { data: publicKey } = await octokit.rest.actions.getRepoPublicKey({
   repo,
 });
 
-// Encrypt the secret value using libsodium (see GitHub docs for encryption details)
+// Encrypt the secret value using libsodium
+// See: https://docs.github.com/en/rest/actions/secrets#create-or-update-a-repository-secret
+// Use the tweetsodium or libsodium-wrappers npm package for encryption:
+//   import sodium from "libsodium-wrappers";
+//   await sodium.ready;
+//   const binkey = sodium.from_base64(publicKey.key, sodium.base64_variants.ORIGINAL);
+//   const binsec = sodium.from_string(apiKeyValue);
+//   const encrypted = sodium.crypto_box_seal(binsec, binkey);
+//   const encryptedValue = sodium.to_base64(encrypted, sodium.base64_variants.ORIGINAL);
 const encryptedValue = encryptSecret(publicKey.key, apiKeyValue);
 
 await octokit.rest.actions.createOrUpdateRepoSecret({

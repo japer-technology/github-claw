@@ -16,15 +16,15 @@ Welcome to the GitClaw help center. Everything you need to install, configure, a
 
 | Topic | Description |
 |-------|-------------|
-| [🔧 Install](install.md) | First-time setup — copy the folder, run the installer, add your API key, and go |
-| [🗑️ Uninstall](uninstall.md) | Completely remove GitClaw from a repository |
-| [♻️ Reinstall](reinstall.md) | Reset or upgrade an existing GitClaw installation |
-| [⏸️ Disable](disable.md) | Temporarily stop the agent without removing anything |
-| [▶️ Enable](enable.md) | Re-activate a disabled agent |
-| [⚙️ Configure](configure.md) | Change the LLM provider, model, personality, thinking level, and more |
-| [🚀 Action Management](action-management.md) | Manage the GitHub Actions workflow that powers GitClaw |
-| [💬 Issues Management](issues-management.md) | Use GitHub Issues as your AI conversation interface |
-| [❤️ Heart Requirement](heart-requirement.md) | Optionally require a heart emoji in new issues for the agent to respond |
+| [Install](install.md) | First-time setup — copy the folder, run the installer, add your API key, and go |
+| [Uninstall](uninstall.md) | Completely remove GitClaw from a repository |
+| [Reinstall](reinstall.md) | Reset or upgrade an existing GitClaw installation |
+| [Disable](disable.md) | Temporarily stop the agent without removing anything |
+| [Enable](enable.md) | Re-activate a disabled agent |
+| [Configure](configure.md) | Change the LLM provider, model, personality, thinking level, and more |
+| [Action Management](action-management.md) | Manage the GitHub Actions workflow that powers GitClaw |
+| [Issues Management](issues-management.md) | Use GitHub Issues as your AI conversation interface |
+| [Heart Requirement](heart-requirement.md) | Optionally require a heart emoji in new issues for the agent to respond |
 
 ---
 

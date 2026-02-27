@@ -238,11 +238,17 @@ In `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`, add the secret as an environm
 - name: Run
   env:
     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+    XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+    OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+    GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   run: bun .GITCLAW/lifecycle/GITCLAW-AGENT.ts
 ```
 
-If you switch providers, update this block to reference the new secret name.
+This keeps all supported provider keys managed in one place, so changing `defaultProvider` does not require workflow edits.
 
 ## After Making Changes
 

@@ -11,9 +11,8 @@
  * heart emoji somewhere in their body.  If the emoji is absent, the workflow
  * exits early and the agent does not process the issue.
  *
- * When no `GITCLAW-HEART-REQUIRED.*` file is found (the default — the repo
- * ships with `GITCLAW-HEART-NOT-REQUIRED.md`), the guard passes immediately
- * and all issues are processed normally.
+ * When no `GITCLAW-HEART-REQUIRED.*` file is found, the guard passes
+ * immediately and all issues are processed normally.
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * SCOPE
@@ -27,12 +26,10 @@
  * ACTIVATION
  * ─────────────────────────────────────────────────────────────────────────────
  * To ENABLE  the heart requirement:
- *   Rename `GITCLAW-HEART-NOT-REQUIRED.md` → `GITCLAW-HEART-REQUIRED.md`
- *   (or create any file named `GITCLAW-HEART-REQUIRED.*`).
+ *   Create any file named `GITCLAW-HEART-REQUIRED.*`.
  *
  * To DISABLE the heart requirement:
- *   Rename `GITCLAW-HEART-REQUIRED.md` → `GITCLAW-HEART-NOT-REQUIRED.md`
- *   (or delete all `GITCLAW-HEART-REQUIRED.*` files).
+ *   Delete all `GITCLAW-HEART-REQUIRED.*` files.
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * DEPENDENCIES
@@ -93,6 +90,6 @@ if (heartPattern.test(issueBody)) {
 console.error(
   "GitClaw heart guard — issue does not contain a ❤️ heart emoji. Skipping.\n" +
   "To process this issue, edit it to include a heart emoji (❤️) in the body.\n" +
-  "To disable this requirement, rename `.GITCLAW/GITCLAW-HEART-REQUIRED.md` to `.GITCLAW/GITCLAW-HEART-NOT-REQUIRED.md`."
+  "To disable this requirement, delete `.GITCLAW/GITCLAW-HEART-REQUIRED.md` (or any matching `GITCLAW-HEART-REQUIRED.*` file)."
 );
 process.exit(1);

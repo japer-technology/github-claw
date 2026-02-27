@@ -1,6 +1,6 @@
-# japer-technology/gitclaw
+# japer-technology/github-claw
 
-###  A Drop-In AI Agent
+### [🦞Home](/.GITCLAW/README.md) [🦞Quick Start](/.GITCLAW/GITCLAW-QUICKSTART.md) [🦞The Repo is the Mind](/THE-REPO-IS-THE-MIND.md)
 
 <p align="center">
   <picture>
@@ -8,4 +8,3 @@
   </picture>
 </p>
 
-### [🦞Home](/.GITCLAW/README.md) [🦞Quick Start](/.GITCLAW/GITCLAW-QUICKSTART.md) [🦞Internals](/.GITCLAW/docs/GITCLAW-Internal-Mechanics.md) [🦞Possibilities](/.GITCLAW/docs/GITCLAW-Possibilities.md) [🦞Road Map](/.GITCLAW/docs/GITCLAW-Roadmap.md)

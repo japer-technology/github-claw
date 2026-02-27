@@ -1,12 +1,18 @@
-# The Architecture of Autonomy: Installation vs. Forking in .GITCLAW
+# The Architecture of Autonomy
 
-### The fundamental design theory distinguishing a `.GITCLAW` installation from its fork parent.
+### Installation vs. Forking in .GITCLAW
 
----
+The fundamental design theory distinguishing a `.GITCLAW` installation from its fork parent.
 
-## The One-Sentence Answer
+## The Short Answer
 
 Installing `.GITCLAW` into a repository is **composition**—the agent serves the host. Forking the parent repository is **inheritance**—the agent *is* the host. This single distinction dictates the fundamental relationship between the AI agent, your codebase, and its evolving identity.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+  </picture>
+</p>
 
 ---
 

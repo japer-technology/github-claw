@@ -1,4 +1,4 @@
-# .GITHUB-CLAW 
+# japer-technology/github-claw
 
 <p align="center">
   <picture>
@@ -6,7 +6,7 @@
   </picture>
 </p>
 
-# An AI Agent As A Drop In
+# The Repo is the _Mind_
 
 An AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.GITCLAW` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
 

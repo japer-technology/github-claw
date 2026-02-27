@@ -157,7 +157,7 @@ Random users on public repositories cannot trigger the agent by opening issues o
 
 ## Heart Emoji Requirement
 
-GitClaw supports an optional heart emoji gate for new issues. When enabled (by renaming `.GITCLAW/GITCLAW-HEART-NOT-REQUIRED.md` to `.GITCLAW/GITCLAW-HEART-REQUIRED.md`), the agent only processes new issues that contain a ❤️ heart emoji in the issue body. Comments on existing issues are always processed.
+GitClaw supports an optional heart emoji gate for new issues. When a `.GITCLAW/GITCLAW-HEART-REQUIRED.*` file exists, the agent only processes new issues that contain a ❤️ heart emoji in the issue body. Comments on existing issues are always processed.
 
 See [❤️ Heart Requirement](heart-requirement.md) for full details.
 

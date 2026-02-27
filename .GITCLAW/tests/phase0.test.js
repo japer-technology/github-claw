@@ -339,12 +339,6 @@ describe("Heart emoji guard", () => {
     );
   });
 
-  it("default sentinel file is GITCLAW-HEART-NOT-REQUIRED.md", () => {
-    assert.ok(
-      fs.existsSync(path.join(GITCLAW, "GITCLAW-HEART-NOT-REQUIRED.md"))
-    );
-  });
-
   it("guard checks for GITCLAW-HEART-REQUIRED file pattern", () => {
     const guard = readFile(".GITCLAW/lifecycle/GITCLAW-HEART-GUARD.ts");
     assert.ok(guard.includes("GITCLAW-HEART-REQUIRED"));

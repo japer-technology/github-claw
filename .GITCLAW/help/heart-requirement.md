@@ -13,7 +13,7 @@ GitClaw looks for a file matching `.GITCLAW/GITCLAW-HEART-REQUIRED.*` (any exten
 - **New issues** (`issues.opened` events) must contain a heart emoji (❤️) in the issue body. If the heart emoji is missing, the workflow exits at the Heart Guard step and the agent does not respond.
 - **Comments on existing issues** (`issue_comment.created` events) are always processed regardless of this setting.
 
-By default, the repository ships with `.GITCLAW/GITCLAW-HEART-NOT-REQUIRED.md`, which means the heart requirement is **not active** — all new issues are processed normally.
+If no `.GITCLAW/GITCLAW-HEART-REQUIRED.*` file exists, the heart requirement is **not active** — all new issues are processed normally.
 
 ## Supported Heart Emojis
 
@@ -23,11 +23,11 @@ The guard recognizes a variety of heart emoji characters, including:
 
 ## Enable Heart Requirement
 
-Rename the sentinel file and push:
+Create the sentinel file and push:
 
 ```bash
 cd .GITCLAW
-mv GITCLAW-HEART-NOT-REQUIRED.md GITCLAW-HEART-REQUIRED.md
+touch GITCLAW-HEART-REQUIRED.md
 git add -A
 git commit -m "Require heart emoji for new issues"
 git push
@@ -37,11 +37,11 @@ Once enabled, new issues without a heart emoji in the body will be skipped by th
 
 ## Disable Heart Requirement
 
-Rename the file back:
+Delete the sentinel file:
 
 ```bash
 cd .GITCLAW
-mv GITCLAW-HEART-REQUIRED.md GITCLAW-HEART-NOT-REQUIRED.md
+rm -f GITCLAW-HEART-REQUIRED.md
 git add -A
 git commit -m "Remove heart emoji requirement"
 git push

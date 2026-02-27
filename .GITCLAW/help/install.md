@@ -69,10 +69,6 @@ Go to your repo's **Issues** tab and create a new issue. Write anything — ask 
 
 The 👀 reaction appears while the agent is working and disappears when it finishes.
 
-## Automated Installation (Alternative)
-
-You can copy `GITCLAW-INSTALLER.yml` to `.github/workflows/` and trigger the bootstrap workflow from the GitHub Actions tab. See [install/README.md](../install/README.md) for details on this approach.
-
 ## What Gets Installed
 
 ```

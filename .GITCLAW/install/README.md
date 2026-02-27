@@ -1,6 +1,6 @@
 # .GITCLAW 🦞 Install
 
-### These files are installed by GITCLAW-INSTALLER.yml
+### Installable payload for GitClaw
 
 <p align="center">
   <picture>
@@ -83,29 +83,7 @@ bun install
 2. Commit the new/installed files.
 3. Push to GitHub.
 
-### 6) (Optional) Enable the automated installer workflow
-
-`GITCLAW-INSTALLER.yml` is a reusable GitHub Actions workflow that bootstraps gitclaw automatically whenever changes to `.GITCLAW/**` are pushed, or on demand via `workflow_dispatch`.
-
-To activate it:
-
-1. Copy `.GITCLAW/GITCLAW-INSTALLER.yml` into your `.github/workflows/` folder:
-
-   ```bash
-   cp .GITCLAW/GITCLAW-INSTALLER.yml .github/workflows/GITCLAW-INSTALLER.yml
-   ```
-
-2. Commit and push:
-
-   ```bash
-   git add .github/workflows/GITCLAW-INSTALLER.yml
-   git commit -m "chore: add GITCLAW installer workflow"
-   git push
-   ```
-
-3. To trigger it manually, go to **Actions → GITCLAW Bootstrap → Run workflow** in your GitHub repository.
-
-### 7) Start using the agent
+### 6) Start using the agent
 
 Open a GitHub issue. The workflow picks it up and the agent responds in issue comments.
 

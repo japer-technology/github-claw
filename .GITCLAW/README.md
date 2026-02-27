@@ -1,4 +1,4 @@
-# .GITCLAW 🦞 An AI Agent As A Drop In
+# .GITHUB-CLAW 🦞 An AI Agent As A Drop In
 
 <p align="center">
   <picture>
@@ -6,9 +6,9 @@
   </picture>
 </p>
 
-### [🦞Quick Start](GITCLAW-QUICKSTART.md) · [🦞Internals](docs/GITCLAW-Internal-Mechanics.md) · [🦞Possibilities](docs/GITCLAW-Possibilities.md) · [🦞Road Map](docs/GITCLAW-Roadmap.md) · [🦞The Idea](docs/GITCLAW-The-Idea.md)
+### [🦞Quick Start](GITCLAW-QUICKSTART.md)
 
-A personal AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.GITCLAW` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
+An AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.GITCLAW` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
 
 > **New here?** Check the [Quick Start](GITCLAW-QUICKSTART.md) to get running in under 5 minutes.
 

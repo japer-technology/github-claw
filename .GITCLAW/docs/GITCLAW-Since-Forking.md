@@ -50,7 +50,6 @@ The original `lifecycle/`, `.pi/`, `AGENTS.md`, `LICENSE`, and `banner.jpeg` wer
 - **`.GITCLAW/lifecycle/`** — Renamed: `GITCLAW-AGENT.ts`, `GITCLAW-ENABLED.ts`, `GITCLAW-INDICATOR.ts`
 - **`.GITCLAW/install/`** — New installer: `GITCLAW-INSTALLER.ts`, `.gitattributes`, `.gitignore`, `GITCLAW-WORKFLOW-AGENT.yml`
 - **`.GITCLAW/.pi/`** — Pi config preserved inside `.GITCLAW`
-- **`.GITCLAW/build/`** — Build directory with README
 - **`.GITCLAW/package.json`** — Dedicated package.json
 
 ### 2. Extensive Documentation (15+ new docs)

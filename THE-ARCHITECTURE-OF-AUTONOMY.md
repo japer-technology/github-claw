@@ -92,7 +92,7 @@ When you fork a repository, you fork the agent's mind. In an installation, the m
 * **In an installation:** The blast radius of a change is contained. The `.GITCLAW/` folder is cleanly isolated from the host's `src/`, `tests/`, and `docs/`. Modifying the agent means touching `.GITCLAW/`. Modifying the project means touching everything else. Two developers can work simultaneously without collision.
 * **In a fork:** The `.GITCLAW/` directory contains the agent *and* is the project. Changing a lifecycle script alters both the framework and the active project. The installer, the tests, and the docs simultaneously serve as the agent's underlying infrastructure and the repository's primary content.
 
-This is precisely why the official documentation recommends **copying** the `.GITCLAW/` directory rather than forking it. The [Delivery Methods](https://www.google.com/search?q=/.GITCLAW/docs/GITCLAW-Delivery-Methods.md) guide explicitly favors approaches that yield "a clean commit history (no fork baggage)," recognizing that upstream history is development scaffolding, not operational intelligence.
+This is precisely why the official documentation recommends **copying** the `.GITCLAW/` directory rather than forking it. It explicitly favors approaches that yield "a clean commit history (no fork baggage)," recognizing that upstream history is development scaffolding, not operational intelligence.
 
 ---
 

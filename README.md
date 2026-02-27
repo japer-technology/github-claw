@@ -1,6 +1,6 @@
 # japer-technology/github-claw
 
-###  A Drop-In AI Agent
+### [🦞Home](/.GITCLAW/README.md) [🦞Quick Start](/.GITCLAW/GITCLAW-QUICKSTART.md)
 
 <p align="center">
   <picture>
@@ -8,4 +8,3 @@
   </picture>
 </p>
 
-### [🦞Home](/.GITCLAW/README.md) [🦞Quick Start](/.GITCLAW/GITCLAW-QUICKSTART.md)

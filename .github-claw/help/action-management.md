@@ -183,6 +183,6 @@ The agent retries pushes up to 3 times with `--rebase`. If conflicts persist, ch
 
 ## See Also
 
-- [⚙️ Configure](configure.md) — LLM model and agent settings
-- [💬 Issues Management](issues-management.md) — how conversations work
-- [⏸️ Disable](disable.md) / [▶️ Enable](enable.md) — control the agent
+- [Configure](configure.md) — LLM model and agent settings
+- [Issues Management](issues-management.md) — how conversations work
+- [Disable](disable.md) / [Enable](enable.md) — control the agent

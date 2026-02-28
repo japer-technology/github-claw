@@ -1,10 +1,14 @@
-# ♻️ Reinstall GitClaw
+# japer-technology/github-claw
 
-[← Back to Help](README.md)
-
----
+## Reinstall
 
 Reset or upgrade an existing GitClaw installation. Use this when you want a fresh start, need to update to a newer version, or want to fix a broken installation.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="320">
+  </picture>
+</p>
 
 ## When to Reinstall
 
@@ -133,6 +137,6 @@ The agent will start fresh conversations for all issues going forward.
 
 ## See Also
 
-- [🔧 Install](install.md) — first-time installation guide
-- [🗑️ Uninstall](uninstall.md) — complete removal
-- [⚙️ Configure](configure.md) — customize after reinstalling
+- [Install](install.md) — first-time installation guide
+- [Uninstall](uninstall.md) — complete removal
+- [Configure](configure.md) — customize after reinstalling

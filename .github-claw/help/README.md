@@ -1,8 +1,10 @@
-# .github-claw 🦞 Help
+# japer-technology/github-claw
+
+## Help
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="320">
   </picture>
 </p>
 
@@ -12,7 +14,7 @@ Welcome to the GitClaw help center. Everything you need to install, configure, a
 
 ---
 
-## 📖 Help Topics
+## Help Topics
 
 | Topic | Description |
 |-------|-------------|
@@ -29,11 +31,11 @@ Welcome to the GitClaw help center. Everything you need to install, configure, a
 
 ## Quick Links
 
-- [🦞 GitClaw Home](../README.md)
-- [🦞 Quick Start](../github-claw-QUICKSTART.md)
-- [🦞 Internal Mechanics](../docs/github-claw-Internal-Mechanics.md)
-- [🦞 Roadmap](../docs/github-claw-Roadmap.md)
-- [🦞 Possibilities](../docs/github-claw-Possibilities.md)
+- [GitClaw Home](../README.md)
+- [Quick Start](../github-claw-QUICKSTART.md)
+- [Internal Mechanics](../docs/github-claw-Internal-Mechanics.md)
+- [Roadmap](../docs/github-claw-Roadmap.md)
+- [Possibilities](../docs/github-claw-Possibilities.md)
 
 ---
 

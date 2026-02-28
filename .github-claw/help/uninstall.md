@@ -1,10 +1,14 @@
-# 🗑️ Uninstall GitClaw
+# japer-technology/github-claw
 
-[← Back to Help](README.md)
-
----
+## Uninstall
 
 Completely remove GitClaw from your repository. This guide covers both full removal and partial cleanup options.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="320">
+  </picture>
+</p>
 
 ## Full Uninstall
 
@@ -78,5 +82,5 @@ The session files in `.github-claw/state/sessions/` are plain JSONL files and re
 
 ## See Also
 
-- [⏸️ Disable](disable.md) — temporarily stop the agent without removing anything
-- [♻️ Reinstall](reinstall.md) — reset or upgrade GitClaw
+- [Disable](disable.md) — temporarily stop the agent without removing anything
+- [Reinstall](reinstall.md) — reset or upgrade GitClaw

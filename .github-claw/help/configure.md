@@ -1,10 +1,14 @@
-# ⚙️ Configure GitClaw
+# japer-technology/github-claw
 
-[← Back to Help](README.md)
-
----
+## Configure
 
 Customize the LLM provider, model, agent personality, thinking level, tool access, and workflow behavior.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="320">
+  </picture>
+</p>
 
 ## Configuration Files Overview
 
@@ -264,6 +268,6 @@ The next issue or comment will use the updated configuration.
 
 ## See Also
 
-- [🔧 Install](install.md) — first-time setup
-- [🚀 Action Management](action-management.md) — customize the workflow
-- [💬 Issues Management](issues-management.md) — how conversations work
+- [Install](install.md) — first-time setup
+- [Action Management](action-management.md) — customize the workflow
+- [Issues Management](issues-management.md) — how conversations work

@@ -33,16 +33,13 @@ Welcome to the GitClaw help center. Everything you need to install, configure, a
 
 - [GitClaw Home](../README.md)
 - [Quick Start](../github-claw-QUICKSTART.md)
-- [Internal Mechanics](../docs/github-claw-Internal-Mechanics.md)
-- [Roadmap](../docs/github-claw-Roadmap.md)
-- [Possibilities](../docs/github-claw-Possibilities.md)
 
 ---
 
 ## How GitClaw Works — In 30 Seconds
 
 1. **Drop** the `.github-claw` folder into any GitHub repo.
-2. **Run** the installer and add your LLM API key.
+2. **Move** the agent workflow and add your LLM API key.
 3. **Open an issue** — the agent reads it, thinks, and replies as a comment.
 4. **Comment** on the same issue to continue the conversation. The agent remembers everything.
 

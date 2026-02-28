@@ -2,11 +2,11 @@
  * GITCLAW-INSTALLER.ts — One-time setup script for gitclaw.
  *
  * Copies the GitHub Actions workflow, issue templates, and git attributes
- * from `.GITCLAW/install` into the standard locations the repo needs to function.
+ * from `.github-claw/install` into the standard locations the repo needs to function.
  * Existing files are never overwritten — only missing ones are installed.
  *
  * Usage:
- *   bun .GITCLAW/install/GITCLAW-INSTALLER.ts
+ *   bun .github-claw/install/GITCLAW-INSTALLER.ts
  */
 
 import { existsSync, mkdirSync, cpSync, readFileSync, writeFileSync } from "fs";
@@ -15,7 +15,7 @@ import { resolve } from "path";
 /** Directory containing the installable resources. */
 const bootstrapDir = import.meta.dir;
 
-/** Repository root — two levels above `.GITCLAW/install/`. */
+/** Repository root — two levels above `.github-claw/install/`. */
 const repoRoot = resolve(bootstrapDir, "..", "..");
 
 /** Create a directory (and parents) if it does not already exist. */
@@ -82,8 +82,8 @@ copyIfMissing(
 
 // --- Agent identity ---------------------------------------------------
 console.log("\nAgent identity:");
-ensureDir(resolve(repoRoot, ".GITCLAW"));
-copyIfMissing(resolve(bootstrapDir, "GITCLAW-AGENTS.md"), resolve(repoRoot, ".GITCLAW", "AGENTS.md"), ".GITCLAW/AGENTS.md");
+ensureDir(resolve(repoRoot, ".github-claw"));
+copyIfMissing(resolve(bootstrapDir, "GITCLAW-AGENTS.md"), resolve(repoRoot, ".github-claw", "AGENTS.md"), ".github-claw/AGENTS.md");
 
 // --- Git attributes --------------------------------------------------
 // `memory.log merge=union` tells git to union-merge the append-only
@@ -94,6 +94,6 @@ ensureAttribute(resolve(repoRoot, ".gitattributes"), "memory.log merge=union");
 console.log("\n✨ gitclaw installed!\n");
 console.log("Next steps:");
 console.log("  1. Add ANTHROPIC_API_KEY to Settings → Secrets and variables → Actions");
-console.log("  2. Run: cd .GITCLAW/install && bun install");
+console.log("  2. Run: cd .github-claw/install && bun install");
 console.log("  3. Commit and push the changes");
 console.log("  4. Open an issue to start chatting with the agent\n");

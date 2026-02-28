@@ -1,10 +1,10 @@
-# .GITCLAW 🦞 Quick Start
+# .github-claw 🦞 Quick Start
 
 ### Get an AI agent running in any GitHub repo in under 5 minutes.
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/GITCLAW-LOGO.png" alt="GitClaw" width="500">
   </picture>
 </p>
 
@@ -18,10 +18,10 @@
 
 **1. Add gitclaw to your repo**
 
-Copy the `.GITCLAW` folder into your repository root, then run the install script:
+Copy the `.github-claw` folder into your repository root, then run the install script:
 
 ```bash
-bun .GITCLAW/install/GITCLAW-INSTALLER.ts
+bun .github-claw/install/GITCLAW-INSTALLER.ts
 ```
 
 This sets up the GitHub Actions workflow and issue templates.
@@ -29,7 +29,7 @@ This sets up the GitHub Actions workflow and issue templates.
 **2. Install dependencies**
 
 ```bash
-cd .GITCLAW && bun install
+cd .github-claw && bun install
 ```
 
 **3. Add your API key**
@@ -80,7 +80,7 @@ Use the **🥚 Hatch** issue template (or create an issue with the `hatch` label
 
 This is optional. The agent works without hatching, but it's more fun with a personality.
 
-## What's in the `.GITCLAW` folder
+## What's in the `.github-claw` folder
 
 | Path | Purpose |
 |------|---------|
@@ -93,7 +93,7 @@ This is optional. The agent works without hatching, but it's more fun with a per
 
 ## Common tweaks
 
-**Change the model** — edit `.GITCLAW/.pi/settings.json`:
+**Change the model** — edit `.github-claw/.pi/settings.json`:
 
 <details>
 <summary><strong>Anthropic (default)</strong></summary>
@@ -269,7 +269,7 @@ Requires `OPENROUTER_API_KEY`. Browse available models at [openrouter.ai](https:
 
 ## Supported providers
 
-`.pi` supports a wide range of LLM providers out of the box. Set `defaultProvider` and `defaultModel` in `.GITCLAW/.pi/settings.json` and add the matching API key to your workflow:
+`.pi` supports a wide range of LLM providers out of the box. Set `defaultProvider` and `defaultModel` in `.github-claw/.pi/settings.json` and add the matching API key to your workflow:
 
 | Provider | `defaultProvider` | Example model | API key env var |
 |----------|-------------------|---------------|-----------------|

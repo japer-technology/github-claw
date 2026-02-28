@@ -46,7 +46,7 @@ Each run shows which issue triggered it and the full execution log including the
 
 ### Via sentinel file
 
-The workflow also respects the `.GITCLAW/GITCLAW-ENABLED.md` sentinel file. See [Disable](disable.md) and [Enable](enable.md) for details.
+The workflow also respects the `.github-claw/GITCLAW-ENABLED.md` sentinel file. See [Disable](disable.md) and [Enable](enable.md) for details.
 
 ## Re-run a Failed Workflow
 
@@ -116,7 +116,7 @@ To pass additional environment variables to the agent, add them to the **Run** s
     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     CUSTOM_VAR: "my-value"
-  run: bun .GITCLAW/lifecycle/GITCLAW-AGENT.ts
+  run: bun .github-claw/lifecycle/GITCLAW-AGENT.ts
 ```
 
 ## Switch API Key Provider
@@ -128,10 +128,10 @@ When changing LLM providers, update the workflow to reference the correct secret
   env:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Changed from ANTHROPIC_API_KEY
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  run: bun .GITCLAW/lifecycle/GITCLAW-AGENT.ts
+  run: bun .github-claw/lifecycle/GITCLAW-AGENT.ts
 ```
 
-Also update `.GITCLAW/.pi/settings.json` to match (see [Configure](configure.md)).
+Also update `.github-claw/.pi/settings.json` to match (see [Configure](configure.md)).
 
 ## Regenerate the Workflow
 
@@ -139,10 +139,10 @@ If the workflow file gets corrupted or you want to reset it to the template:
 
 ```bash
 rm .github/workflows/GITCLAW-WORKFLOW-AGENT.yml
-bun .GITCLAW/install/GITCLAW-INSTALLER.ts
+bun .github-claw/install/GITCLAW-INSTALLER.ts
 ```
 
-The installer copies the workflow template from `.GITCLAW/install/GITCLAW-WORKFLOW-AGENT.yml`.
+The installer copies the workflow template from `.github-claw/install/GITCLAW-WORKFLOW-AGENT.yml`.
 
 ## Troubleshooting
 
@@ -154,7 +154,7 @@ The installer copies the workflow template from `.GITCLAW/install/GITCLAW-WORKFL
 
 ### Workflow fails at the Guard step
 
-The sentinel file `.GITCLAW/GITCLAW-ENABLED.md` is missing. See [Enable](enable.md) to restore it.
+The sentinel file `.github-claw/GITCLAW-ENABLED.md` is missing. See [Enable](enable.md) to restore it.
 
 ### Workflow fails at the Authorize step
 
@@ -162,8 +162,8 @@ Only users with `admin`, `maintain`, or `write` permission can trigger the agent
 
 ### Workflow fails at the Install step
 
-- Check that `.GITCLAW/package.json` and `.GITCLAW/bun.lock` are present and valid
-- Try running `cd .GITCLAW && bun install` locally to reproduce the error
+- Check that `.github-claw/package.json` and `.github-claw/bun.lock` are present and valid
+- Try running `cd .github-claw && bun install` locally to reproduce the error
 
 ### Agent runs but no comment appears
 

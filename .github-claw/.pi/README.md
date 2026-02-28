@@ -1,10 +1,9 @@
-# japer-technology/github-claw
+# .github-claw 🦞 Relies on .Pi 
 
-### [🦞Home](/.github-claw/README.md) [🦞Quick Start](/.github-claw/GITCLAW-QUICKSTART.md) [🦞The Repo is the Mind](/THE-REPO-IS-THE-MIND.md)
+### Pi creates a persistent, opinionated agent with memory and relationships.
 
 <p align="center">
   <picture>
     <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/GITCLAW-LOGO.png" alt="GitClaw" width="500">
   </picture>
 </p>
-

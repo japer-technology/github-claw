@@ -48,7 +48,7 @@ This works even if days or weeks have passed since the last interaction — the 
 All conversation state lives in the repository:
 
 ```
-.GITCLAW/state/
+.github-claw/state/
   issues/
     1.json           # Maps issue #1 → its session file
     42.json          # Maps issue #42 → its session file
@@ -64,7 +64,7 @@ Each file maps an issue number to its session:
 ```json
 {
   "issueNumber": 1,
-  "sessionPath": ".GITCLAW/state/sessions/2026-02-04T12-00-00-000Z_abc123.jsonl",
+  "sessionPath": ".github-claw/state/sessions/2026-02-04T12-00-00-000Z_abc123.jsonl",
   "updatedAt": "2026-02-04T12:00:00.000Z"
 }
 ```
@@ -77,10 +77,10 @@ These files are plain text and can be inspected with standard tools:
 
 ```bash
 # View the last few events in a session
-tail -5 .GITCLAW/state/sessions/*.jsonl
+tail -5 .github-claw/state/sessions/*.jsonl
 
 # Search all sessions for a keyword
-grep -r "search term" .GITCLAW/state/sessions/
+grep -r "search term" .github-claw/state/sessions/
 ```
 
 ## Personality Hatching
@@ -90,7 +90,7 @@ Use the **🥚 Hatch** issue template to give the agent a personality through a 
 1. Go to **Issues → New issue**
 2. Select the **🥚 Hatch** template (or create an issue with the `hatch` label)
 3. The agent walks you through choosing a name, personality, and behavioral style
-4. The result is saved to `.GITCLAW/AGENTS.md`
+4. The result is saved to `.github-claw/AGENTS.md`
 
 Hatching is optional — the agent works without it, but it's more fun with a personality.
 
@@ -127,9 +127,9 @@ Each one has its own session file and context. They don't interfere with each ot
 Delete the mapping and session files:
 
 ```bash
-rm .GITCLAW/state/issues/<number>.json
+rm .github-claw/state/issues/<number>.json
 # Find and delete the corresponding session file
-rm .GITCLAW/state/sessions/<timestamp>_<id>.jsonl
+rm .github-claw/state/sessions/<timestamp>_<id>.jsonl
 
 git add -A
 git commit -m "Clear session for issue #<number>"
@@ -141,8 +141,8 @@ The next comment on that issue will start a fresh conversation.
 ### For all issues
 
 ```bash
-rm -rf .GITCLAW/state/sessions/*
-rm -rf .GITCLAW/state/issues/*
+rm -rf .github-claw/state/sessions/*
+rm -rf .github-claw/state/issues/*
 
 git add -A
 git commit -m "Clear all gitclaw sessions"

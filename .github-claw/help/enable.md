@@ -11,7 +11,7 @@ Re-activate a previously disabled GitClaw agent, or confirm that GitClaw is curr
 GitClaw uses a **fail-closed** security model controlled by a single sentinel file:
 
 ```
-.GITCLAW/GITCLAW-ENABLED.md
+.github-claw/GITCLAW-ENABLED.md
 ```
 
 When this file exists in the repository, the agent is **enabled** and will respond to issues and comments. When it's missing, the agent is **disabled** and all workflow runs exit immediately at the Guard step.
@@ -23,13 +23,13 @@ When this file exists in the repository, the agent is **enabled** and will respo
 Recreate the sentinel file and push:
 
 ```bash
-cat > .GITCLAW/GITCLAW-ENABLED.md << 'EOF'
-# .GITCLAW 🦞 Enabled
+cat > .github-claw/GITCLAW-ENABLED.md << 'EOF'
+# .github-claw 🦞 Enabled
 
-### Delete or rename this file to disable .GITCLAW
+### Delete or rename this file to disable .github-claw
 EOF
 
-git add .GITCLAW/GITCLAW-ENABLED.md
+git add .github-claw/GITCLAW-ENABLED.md
 git commit -m "Enable gitclaw"
 git push
 ```
@@ -39,7 +39,7 @@ git push
 Rename it back:
 
 ```bash
-mv .GITCLAW/GITCLAW-DISABLED.md .GITCLAW/GITCLAW-ENABLED.md
+mv .github-claw/GITCLAW-DISABLED.md .github-claw/GITCLAW-ENABLED.md
 git add -A
 git commit -m "Enable gitclaw"
 git push
@@ -60,7 +60,7 @@ Check that all of the following are in place:
 
 | Check | How to Verify |
 |-------|---------------|
-| Sentinel file exists | `ls .GITCLAW/GITCLAW-ENABLED.md` — file should be present |
+| Sentinel file exists | `ls .github-claw/GITCLAW-ENABLED.md` — file should be present |
 | Workflow exists | `ls .github/workflows/GITCLAW-WORKFLOW-AGENT.yml` — file should be present |
 | Workflow is active | Go to **Actions** tab — workflow should not show "This workflow is disabled" |
 | API key is set | Go to **Settings → Secrets and variables → Actions** — the provider secret should be listed |
@@ -76,7 +76,7 @@ Open a test issue or comment on an existing one. You should see:
 
 ## Enabling for the First Time
 
-If you haven't installed GitClaw yet, see [Install](install.md) instead. The sentinel file is included in the `.GITCLAW` folder by default — no extra steps are needed to enable it during initial setup.
+If you haven't installed GitClaw yet, see [Install](install.md) instead. The sentinel file is included in the `.github-claw` folder by default — no extra steps are needed to enable it during initial setup.
 
 ## See Also
 

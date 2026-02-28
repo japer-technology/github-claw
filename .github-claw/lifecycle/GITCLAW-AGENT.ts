@@ -43,8 +43,8 @@
  * SESSION CONTINUITY
  * ─────────────────────────────────────────────────────────────────────────────
  * GitClaw maintains per-issue session state in:
- *   .GITCLAW/state/issues/<number>.json   — maps issue # → session file path
- *   .GITCLAW/state/sessions/<timestamp>.jsonl — the `pi` session transcript
+ *   .github-claw/state/issues/<number>.json   — maps issue # → session file path
+ *   .github-claw/state/sessions/<timestamp>.jsonl — the `pi` session transcript
  *
  * On every run the agent checks for an existing mapping.  If the mapped session
  * file is still present, the run "resumes" by passing `--session <path>` to `pi`,
@@ -78,8 +78,8 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from "fs";
 import { resolve } from "path";
 
 // ─── Paths and event context ───────────────────────────────────────────────────
-// `import.meta.dir` resolves to `.GITCLAW/lifecycle/`; stepping up one level
-// gives us the `.GITCLAW/` directory which contains `state/` and `node_modules/`.
+// `import.meta.dir` resolves to `.github-claw/lifecycle/`; stepping up one level
+// gives us the `.github-claw/` directory which contains `state/` and `node_modules/`.
 const gitclawDir = resolve(import.meta.dir, "..");
 const stateDir = resolve(gitclawDir, "state");
 const issuesDir = resolve(stateDir, "issues");
@@ -88,7 +88,7 @@ const piSettingsPath = resolve(gitclawDir, ".pi", "settings.json");
 
 // The `pi` CLI requires a repo-root-relative path for `--session-dir`, not an
 // absolute one, so we keep this as a relative string constant.
-const sessionsDirRelative = ".GITCLAW/state/sessions";
+const sessionsDirRelative = ".github-claw/state/sessions";
 
 // GitHub enforces a ~65 535 character limit on issue comments; cap at 60 000
 // characters to leave a comfortable safety margin and avoid API rejections.

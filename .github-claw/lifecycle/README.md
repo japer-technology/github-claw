@@ -1,6 +1,6 @@
-# japer-technology/github-claw
+# .github-claw 🦞 Life Cycle
 
-### [🦞Home](/.github-claw/README.md) [🦞Quick Start](/.github-claw/GITCLAW-QUICKSTART.md) [🦞The Repo is the Mind](/THE-REPO-IS-THE-MIND.md)
+### The magic lives here...
 
 <p align="center">
   <picture>
@@ -8,3 +8,4 @@
   </picture>
 </p>
 
+GitHub offers many ways to interact

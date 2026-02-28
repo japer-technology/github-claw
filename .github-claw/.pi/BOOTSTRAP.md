@@ -25,10 +25,10 @@ Offer suggestions if they're stuck. Have fun with it.
 
 Update these files with what you learned:
 
-- `/.GITCLAW/AGENTS.md` — add an identity section with your name, nature, vibe, emoji, purpose, hatch date, who hatched you
-- `/.GITCLAW/state/user.md` — their name, how to address them, any notes
+- `/.github-claw/AGENTS.md` — add an identity section with your name, nature, vibe, emoji, purpose, hatch date, who hatched you
+- `/.github-claw/state/user.md` — their name, how to address them, any notes
 
-Then read `.GITCLAW/.pi/APPEND_SYSTEM.md` together and talk about:
+Then read `.github-claw/.pi/APPEND_SYSTEM.md` together and talk about:
 
 - What matters to them
 - How they want you to behave

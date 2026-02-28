@@ -41,15 +41,15 @@ jobs:
           bun-version: latest
 
       - name: Guard
-        run: bun .GITCLAW/lifecycle/GITCLAW-ENABLED.ts
+        run: bun .github-claw/lifecycle/GITCLAW-ENABLED.ts
 
       - name: Preinstall
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bun .GITCLAW/lifecycle/GITCLAW-INDICATOR.ts
+        run: bun .github-claw/lifecycle/GITCLAW-INDICATOR.ts
 
       - name: Install dependencies
-        run: cd .GITCLAW && bun install --frozen-lockfile
+        run: cd .github-claw && bun install --frozen-lockfile
 
       - name: Run
         env:
@@ -61,4 +61,4 @@ jobs:
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bun .GITCLAW/lifecycle/GITCLAW-AGENT.ts
+        run: bun .github-claw/lifecycle/GITCLAW-AGENT.ts

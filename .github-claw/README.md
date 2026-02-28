@@ -2,13 +2,13 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/GITCLAW-LOGO.png" alt="GitClaw" width="500">
   </picture>
 </p>
 
 # The Repo is the _Mind_
 
-An AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.GITCLAW` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
+An AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.github-claw` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
 
 > **New here?** Check the [Quick Start](GITCLAW-QUICKSTART.md) to get running in under 5 minutes.
 
@@ -20,7 +20,7 @@ Since the agent can read and write files, you can build an evolving software pro
 
 | Capability | Why it matters |
 |---|---|
-| **Single folder, any repo** | Copy `.GITCLAW/` in and run the install script. Nothing to host or maintain. |
+| **Single folder, any repo** | Copy `.github-claw/` in and run the install script. Nothing to host or maintain. |
 | **Zero infrastructure** | Runs on GitHub Actions with your repo as the only backend. |
 | **Persistent memory** | Conversations are committed to git — the agent remembers everything across sessions. |
 | **Full auditability** | Every interaction is versioned; review or roll back any change the agent made. |
@@ -42,7 +42,7 @@ The agent reacts with 👀 while working and removes it when done.
 All state lives in the repo:
 
 ```
-.GITCLAW/state/
+.github-claw/state/
   issues/
     1.json          # maps issue #1 → its session file
   sessions/
@@ -53,32 +53,32 @@ Each issue number is a stable conversation key — `issue #N` → `state/issues/
 
 ## Setup — Add to Any Repo
 
-gitclaw lives entirely inside a `.GITCLAW` folder that you drop into your repository.
+gitclaw lives entirely inside a `.github-claw` folder that you drop into your repository.
 
-1. **Copy the `.GITCLAW` folder** into your repo's root.
+1. **Copy the `.github-claw` folder** into your repo's root.
 2. **Run the install script** to set up workflows and templates:
    ```bash
-   bun .GITCLAW/install/GITCLAW-INSTALLER.ts
+   bun .github-claw/install/GITCLAW-INSTALLER.ts
    ```
 3. **Install dependencies:**
    ```bash
-   cd .GITCLAW && bun install
+   cd .github-claw && bun install
    ```
 4. **Add your LLM API key** — go to **Settings → Secrets and variables → Actions** and create a secret for your chosen provider (e.g. `ANTHROPIC_API_KEY`). See [Supported Providers](#supported-providers) below.
 5. **Commit and push** the changes.
 6. **Open an issue** — the agent starts automatically.
 
 
-The install script copies the workflow and issue template into the right places. Agent identity and instructions live in `.GITCLAW/AGENTS.md`. Everything gitclaw needs to run lives inside `.GITCLAW/`.
+The install script copies the workflow and issue template into the right places. Agent identity and instructions live in `.github-claw/AGENTS.md`. Everything gitclaw needs to run lives inside `.github-claw/`.
 
 ### Hatching — Give the Agent a Personality
 
 Use the **🥚 Hatch** issue template (or create an issue with the `hatch` label) to go through a guided conversation where you and the agent figure out its name, personality, and vibe together. This is optional — the agent works without hatching — but it's more fun with a personality.
 
-### What's Inside `.GITCLAW/`
+### What's Inside `.github-claw/`
 
 ```
-.GITCLAW/
+.github-claw/
   .pi/                              # Agent personality & skills config
     settings.json                   # LLM provider, model, and thinking level
     APPEND_SYSTEM.md                # System prompt loaded every session
@@ -106,7 +106,7 @@ Use the **🥚 Hatch** issue template (or create an issue with the `hatch` label
 
 ## Supported Providers
 
-Set `defaultProvider` and `defaultModel` in `.GITCLAW/.pi/settings.json` and add the matching API key as a repository secret:
+Set `defaultProvider` and `defaultModel` in `.github-claw/.pi/settings.json` and add the matching API key as a repository secret:
 
 | Provider | `defaultProvider` | Example model | API key secret |
 |---|---|---|---|
@@ -131,7 +131,7 @@ If you plan to use gitclaw for anything private, **make the repo private**. Publ
 
 ## Configuration
 
-**Change the model** — edit `.GITCLAW/.pi/settings.json`:
+**Change the model** — edit `.github-claw/.pi/settings.json`:
 
 ```json
 {

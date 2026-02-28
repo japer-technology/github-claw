@@ -4,4 +4,4 @@ about: "Bootstrap a new agent identity"
 labels: ["hatch"]
 ---
 
-Read `.GITCLAW/.pi/BOOTSTRAP.md` and follow it. That's your birth certificate.
+Read `.github-claw/.pi/BOOTSTRAP.md` and follow it. That's your birth certificate.

@@ -2,8 +2,8 @@
  * Phase 0 validation tests — verify that all Foundation-layer features
  * described in .github-claw/docs/github-claw-Roadmap.md are structurally present.
  *
- * Run with: node --test .github-claw/tests/phase0.test.js
- *        or: bun test .github-claw/tests/phase0.test.js
+ * Run with: node --test .github-claw/tests/github-claw.TEST.js
+ *        or: bun test .github-claw/tests/github-claw.TEST.js
  */
 
 const { describe, it } = require("node:test");

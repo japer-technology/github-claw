@@ -11,7 +11,7 @@ Temporarily stop the GitClaw agent without removing any code, configuration, or 
 GitClaw uses a **fail-closed** security model. Every workflow run begins by checking for the sentinel file:
 
 ```
-.GITCLAW/GITCLAW-ENABLED.md
+.github-claw/GITCLAW-ENABLED.md
 ```
 
 If this file exists, the agent proceeds. If it's missing, the workflow exits immediately — no dependencies are installed, no agent code runs, no comments are posted.
@@ -21,7 +21,7 @@ If this file exists, the agent proceeds. If it's missing, the workflow exits imm
 Delete or rename the sentinel file and push:
 
 ```bash
-rm .GITCLAW/GITCLAW-ENABLED.md
+rm .github-claw/GITCLAW-ENABLED.md
 git add -A
 git commit -m "Disable gitclaw"
 git push
@@ -29,7 +29,7 @@ git push
 
 That's it. The agent is now disabled. Any new issues or comments will trigger the workflow, but it will exit at the Guard step with the message:
 
-> GitClaw disabled — sentinel file `.GITCLAW/GITCLAW-ENABLED.md` is missing.
+> GitClaw disabled — sentinel file `.github-claw/GITCLAW-ENABLED.md` is missing.
 
 ## Alternative: Disable the Workflow
 
@@ -48,9 +48,9 @@ This prevents the workflow from running entirely. No workflow runs will appear i
 
 When you disable GitClaw, everything is preserved:
 
-- ✅ Agent configuration (`.GITCLAW/.pi/settings.json`)
+- ✅ Agent configuration (`.github-claw/.pi/settings.json`)
 - ✅ Agent personality (`AGENTS.md`)
-- ✅ Conversation history (`.GITCLAW/state/`)
+- ✅ Conversation history (`.github-claw/state/`)
 - ✅ GitHub Actions workflow (`.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`)
 - ✅ Issue templates
 - ✅ API key secrets

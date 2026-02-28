@@ -13,7 +13,7 @@ To completely remove GitClaw, delete all of the following and commit the changes
 ### 1. Remove the GitClaw folder
 
 ```bash
-rm -rf .GITCLAW
+rm -rf .github-claw
 ```
 
 This removes everything: the agent code, configuration, session history, state, and all documentation.
@@ -65,10 +65,10 @@ git push
 If you want to stop the agent but preserve conversation history for reference:
 
 1. Delete `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` — this prevents the agent from running
-2. Optionally delete `.GITCLAW/GITCLAW-ENABLED.md` — this is the fail-safe disable (see [Disable](disable.md))
-3. Keep `.GITCLAW/state/` for historical sessions
+2. Optionally delete `.github-claw/GITCLAW-ENABLED.md` — this is the fail-safe disable (see [Disable](disable.md))
+3. Keep `.github-claw/state/` for historical sessions
 
-The session files in `.GITCLAW/state/sessions/` are plain JSONL files and remain readable without GitClaw installed.
+The session files in `.github-claw/state/sessions/` are plain JSONL files and remain readable without GitClaw installed.
 
 ## What to Know Before Uninstalling
 

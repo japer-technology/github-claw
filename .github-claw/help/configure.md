@@ -10,16 +10,16 @@ Customize the LLM provider, model, agent personality, thinking level, tool acces
 
 | File | Purpose |
 |------|---------|
-| `.GITCLAW/.pi/settings.json` | LLM provider, model, and thinking level |
-| `.GITCLAW/AGENTS.md` | Agent identity — name, personality, instructions |
-| `.GITCLAW/.pi/APPEND_SYSTEM.md` | System prompt loaded every session |
-| `.GITCLAW/.pi/BOOTSTRAP.md` | First-run identity prompt (used during hatching) |
-| `.GITCLAW/.pi/skills/` | Modular skill packages |
+| `.github-claw/.pi/settings.json` | LLM provider, model, and thinking level |
+| `.github-claw/AGENTS.md` | Agent identity — name, personality, instructions |
+| `.github-claw/.pi/APPEND_SYSTEM.md` | System prompt loaded every session |
+| `.github-claw/.pi/BOOTSTRAP.md` | First-run identity prompt (used during hatching) |
+| `.github-claw/.pi/skills/` | Modular skill packages |
 | `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` | Workflow triggers, permissions, and environment variables |
 
 ## Change the LLM Provider and Model
 
-Edit `.GITCLAW/.pi/settings.json`:
+Edit `.github-claw/.pi/settings.json`:
 
 ```json
 {
@@ -194,13 +194,13 @@ The `defaultThinkingLevel` controls how much reasoning the model does before res
 
 ## Customize Agent Personality
 
-Edit `.GITCLAW/AGENTS.md` to define the agent's identity, name, personality, and behavioral instructions. This file is read at the start of every session.
+Edit `.github-claw/AGENTS.md` to define the agent's identity, name, personality, and behavioral instructions. This file is read at the start of every session.
 
 You can also use the **🥚 Hatch** issue template to set up a personality interactively — create an issue with the `hatch` label and the agent will guide you through the process.
 
 ## Modify the System Prompt
 
-Edit `.GITCLAW/.pi/APPEND_SYSTEM.md` to change the system-level instructions loaded on every session. This file controls:
+Edit `.github-claw/.pi/APPEND_SYSTEM.md` to change the system-level instructions loaded on every session. This file controls:
 
 - How the agent introduces itself
 - Core behavioral guidelines
@@ -215,7 +215,7 @@ This is useful when you want the agent to answer questions about the codebase wi
 
 ## Add or Modify Skills
 
-Skills are modular capability packages stored as Markdown files in `.GITCLAW/.pi/skills/`. Each skill defines specific behaviors, instructions, or capabilities the agent can use.
+Skills are modular capability packages stored as Markdown files in `.github-claw/.pi/skills/`. Each skill defines specific behaviors, instructions, or capabilities the agent can use.
 
 To add a new skill, create a `.md` file in the skills directory. The agent automatically loads all skill files at session start.
 
@@ -245,7 +245,7 @@ In `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`, add the secret as an environm
     MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
     GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  run: bun .GITCLAW/lifecycle/GITCLAW-AGENT.ts
+  run: bun .github-claw/lifecycle/GITCLAW-AGENT.ts
 ```
 
 This keeps all supported provider keys managed in one place, so changing `defaultProvider` does not require workflow edits.

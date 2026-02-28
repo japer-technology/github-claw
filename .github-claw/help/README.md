@@ -1,8 +1,8 @@
-# .GITCLAW 🦞 Help
+# .github-claw 🦞 Help
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/GITCLAW-LOGO.png" alt="GitClaw" width="400">
   </picture>
 </p>
 
@@ -39,7 +39,7 @@ Welcome to the GitClaw help center. Everything you need to install, configure, a
 
 ## How GitClaw Works — In 30 Seconds
 
-1. **Drop** the `.GITCLAW` folder into any GitHub repo.
+1. **Drop** the `.github-claw` folder into any GitHub repo.
 2. **Run** the installer and add your LLM API key.
 3. **Open an issue** — the agent reads it, thinks, and replies as a comment.
 4. **Comment** on the same issue to continue the conversation. The agent remembers everything.

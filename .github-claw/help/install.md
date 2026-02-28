@@ -16,16 +16,16 @@ Set up a fully functional AI agent in any GitHub repository in under 5 minutes. 
 
 ### 1. Add GitClaw to your repo
 
-Copy the `.GITCLAW` folder into the root of your repository. Then run the install script:
+Copy the `.github-claw` folder into the root of your repository. Then run the install script:
 
 ```bash
-bun .GITCLAW/install/GITCLAW-INSTALLER.ts
+bun .github-claw/install/GITCLAW-INSTALLER.ts
 ```
 
 The installer will:
 - Create `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` — the GitHub Actions workflow that triggers the agent
 - Create `.github/ISSUE_TEMPLATE/hatch.md` — an issue template for personality hatching
-- Create `.GITCLAW/AGENTS.md` — the agent identity file (if not already present)
+- Create `.github-claw/AGENTS.md` — the agent identity file (if not already present)
 - Add a `memory.log merge=union` rule to `.gitattributes` for conflict-free memory logging
 
 > **Note:** The installer never overwrites existing files. If a file already exists, it is skipped.
@@ -33,10 +33,10 @@ The installer will:
 ### 2. Install dependencies
 
 ```bash
-cd .GITCLAW && bun install
+cd .github-claw && bun install
 ```
 
-This installs the `pi` coding agent and other runtime dependencies defined in `.GITCLAW/package.json`.
+This installs the `pi` coding agent and other runtime dependencies defined in `.github-claw/package.json`.
 
 ### 3. Add your API key
 
@@ -77,14 +77,14 @@ The 👀 reaction appears while the agent is working and disappears when it fini
     GITCLAW-WORKFLOW-AGENT.yml                  # GitHub Actions workflow
   ISSUE_TEMPLATE/
     hatch.md                   # Personality hatching template
-.GITCLAW/
+.github-claw/
   AGENTS.md                    # Agent identity file
 .gitattributes                 # Union merge rule for memory.log
 ```
 
 ## Supported Providers
 
-Set `defaultProvider` and `defaultModel` in `.GITCLAW/.pi/settings.json`:
+Set `defaultProvider` and `defaultModel` in `.github-claw/.pi/settings.json`:
 
 | Provider | `defaultProvider` | Example Model | API Key Secret |
 |----------|-------------------|---------------|----------------|
@@ -104,12 +104,12 @@ After pushing, open a test issue. You should see:
 1. The workflow triggers under the **Actions** tab
 2. A 👀 reaction appears on the issue
 3. The agent posts a reply as a comment
-4. Session files appear in `.GITCLAW/state/`
+4. Session files appear in `.github-claw/state/`
 
 If the workflow fails, check the Actions log for details. Common issues:
 
 - **Missing API key** — the agent posts a helpful comment explaining how to fix it
-- **Sentinel file missing** — ensure `.GITCLAW/GITCLAW-ENABLED.md` exists (see [Enable](enable.md))
+- **Sentinel file missing** — ensure `.github-claw/GITCLAW-ENABLED.md` exists (see [Enable](enable.md))
 - **Permission denied** — only repository owners, members, and collaborators can trigger the agent
 
 ## Next Steps

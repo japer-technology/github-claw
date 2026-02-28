@@ -1,10 +1,10 @@
-# .GITCLAW 🦞 MIT License
+# .github-claw 🦞 MIT License
 
 ### Copyright © 2026 Eric Mourant and Sawyer Hood
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/GITCLAW-LOGO.png" alt="GitClaw" width="500">
   </picture>
 </p>
 

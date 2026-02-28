@@ -1,14 +1,14 @@
-# .GITCLAW 🦞 Install
+# .github-claw 🦞 Install
 
 ### Installable payload for GitClaw
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.GITCLAW/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/GITCLAW-LOGO.png" alt="GitClaw" width="500">
   </picture>
 </p>
 
-The `install/` directory contains the **installable payload** for `.GITCLAW`
+The `install/` directory contains the **installable payload** for `.github-claw`
 
 Everything in this folder is intentionally flat (no nested subfolders) so it can be copied, vendored, or inspected quickly.
 
@@ -17,18 +17,18 @@ Everything in this folder is intentionally flat (no nested subfolders) so it can
 - `GITCLAW-INSTALLER.ts` — one-time installer script.
 - `GITCLAW-WORKFLOW-AGENT.yml` — GitHub Actions workflow template copied to `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`.
 - `GITCLAW-TEMPLATE-HATCH.md` — issue template copied to `.github/ISSUE_TEMPLATE/hatch.md`.
-- `GITCLAW-AGENTS.md` — default agent identity/instructions copied to `.GITCLAW/AGENTS.md`.
-- `package.json` and `package-lock.json` — runtime dependencies for the scripts under `.GITCLAW/`.
+- `GITCLAW-AGENTS.md` — default agent identity/instructions copied to `.github-claw/AGENTS.md`.
+- `package.json` and `package-lock.json` — runtime dependencies for the scripts under `.github-claw/`.
 
 ## Install process (step-by-step)
 
-### 1) Place `.GITCLAW` at your repository root
+### 1) Place `.github-claw` at your repository root
 
 The expected layout is:
 
 ```text
 <repo>/
-  .GITCLAW/
+  .github-claw/
     install/
       GITCLAW-INSTALLER.ts
       GITCLAW-WORKFLOW-AGENT.yml
@@ -47,7 +47,7 @@ The expected layout is:
 From the repository root:
 
 ```bash
-bun .GITCLAW/install/GITCLAW-INSTALLER.ts
+bun .github-claw/install/GITCLAW-INSTALLER.ts
 ```
 
 The installer is **non-destructive**:
@@ -59,9 +59,9 @@ The installer is **non-destructive**:
 
 The script installs the following resources:
 
-1. `.GITCLAW/install/GITCLAW-WORKFLOW-AGENT.yml` → `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`
-2. `.GITCLAW/install/GITCLAW-TEMPLATE-HATCH.md` → `.github/ISSUE_TEMPLATE/hatch.md`
-3. `.GITCLAW/install/GITCLAW-AGENTS.md` → `.GITCLAW/AGENTS.md`
+1. `.github-claw/install/GITCLAW-WORKFLOW-AGENT.yml` → `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`
+2. `.github-claw/install/GITCLAW-TEMPLATE-HATCH.md` → `.github/ISSUE_TEMPLATE/hatch.md`
+3. `.github-claw/install/GITCLAW-AGENTS.md` → `.github-claw/AGENTS.md`
 4. Ensures `.gitattributes` contains:
 
 ```text
@@ -73,7 +73,7 @@ That merge rule keeps the memory log append-only merge behavior safe when multip
 ### 4) Install dependencies
 
 ```bash
-cd .GITCLAW
+cd .github-claw
 bun install
 ```
 

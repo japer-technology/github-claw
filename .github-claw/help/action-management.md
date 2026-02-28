@@ -1,10 +1,14 @@
-# 🚀 Action Management
+# japer-technology/github-claw
 
-[← Back to Help](README.md)
-
----
+## Action Management
 
 Manage the GitHub Actions workflow that powers GitClaw. This covers the workflow lifecycle, customization, debugging, and advanced configuration.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="320">
+  </picture>
+</p>
 
 ## The GitClaw Workflow
 

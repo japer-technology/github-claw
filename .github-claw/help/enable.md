@@ -1,10 +1,14 @@
-# ▶️ Enable GitClaw
+# japer-technology/github-claw
 
-[← Back to Help](README.md)
-
----
+## Enable
 
 Re-activate a previously disabled GitClaw agent, or confirm that GitClaw is currently enabled.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="320">
+  </picture>
+</p>
 
 ## How Enabling Works
 
@@ -80,6 +84,6 @@ If you haven't installed GitClaw yet, see [Install](install.md) instead. The sen
 
 ## See Also
 
-- [⏸️ Disable](disable.md) — temporarily stop the agent
-- [⚙️ Configure](configure.md) — adjust settings after enabling
-- [🔧 Install](install.md) — first-time setup
+- [Disable](disable.md) — temporarily stop the agent
+- [Configure](configure.md) — adjust settings after enabling
+- [Install](install.md) — first-time setup

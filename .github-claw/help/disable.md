@@ -1,10 +1,14 @@
-# ⏸️ Disable GitClaw
+# japer-technology/github-claw
 
-[← Back to Help](README.md)
-
----
+## Disable
 
 Temporarily stop the GitClaw agent without removing any code, configuration, or conversation history. When you're ready to bring it back, see [Enable](enable.md).
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="320">
+  </picture>
+</p>
 
 ## How Disabling Works
 
@@ -48,12 +52,12 @@ This prevents the workflow from running entirely. No workflow runs will appear i
 
 When you disable GitClaw, everything is preserved:
 
-- ✅ Agent configuration (`.github-claw/.pi/settings.json`)
-- ✅ Agent personality (`AGENTS.md`)
-- ✅ Conversation history (`.github-claw/state/`)
-- ✅ GitHub Actions workflow (`.github/workflows/github-claw-WORKFLOW-AGENT.yml`)
-- ✅ Issue templates
-- ✅ API key secrets
+- Agent configuration (`.github-claw/.pi/settings.json`)
+- Agent personality (`AGENTS.md`)
+- Conversation history (`.github-claw/state/`)
+- GitHub Actions workflow (`.github/workflows/github-claw-WORKFLOW-AGENT.yml`)
+- Issue templates
+- API key secrets
 
 Nothing is lost. Re-enable at any time by restoring the sentinel file.
 
@@ -66,5 +70,5 @@ Nothing is lost. Re-enable at any time by restoring the sentinel file.
 
 ## See Also
 
-- [▶️ Enable](enable.md) — re-activate the agent
-- [🗑️ Uninstall](uninstall.md) — permanently remove GitClaw
+- [Enable](enable.md) — re-activate the agent
+- [Uninstall](uninstall.md) — permanently remove GitClaw

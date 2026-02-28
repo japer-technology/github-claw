@@ -1,10 +1,14 @@
-# 💬 Issues Management
+# japer-technology/github-claw
 
-[← Back to Help](README.md)
-
----
+## Issues Management
 
 GitHub Issues are your primary interface for interacting with the GitClaw agent. Every issue becomes a persistent, multi-turn conversation with full memory and context.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="320">
+  </picture>
+</p>
 
 ## How Conversations Work
 
@@ -181,6 +185,6 @@ If you see 👀 on an issue, the agent is still running. Check the **Actions** t
 
 ## See Also
 
-- [⚙️ Configure](configure.md) — customize the agent's model and behavior
-- [🚀 Action Management](action-management.md) — manage the workflow
-- [🔧 Install](install.md) — first-time setup
+- [Configure](configure.md) — customize the agent's model and behavior
+- [Action Management](action-management.md) — manage the workflow
+- [Install](install.md) — first-time setup

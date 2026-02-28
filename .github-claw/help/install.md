@@ -1,10 +1,14 @@
-# 🔧 Install GitClaw
+# japer-technology/github-claw
 
-[← Back to Help](README.md)
-
----
+## Install
 
 Set up a fully functional AI agent in any GitHub repository in under 5 minutes. GitClaw runs entirely on GitHub Actions with the repo as the only backend — no servers, no external services.
+
+<p align="center">
+  <picture>
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="320">
+  </picture>
+</p>
 
 ## Prerequisites
 
@@ -114,6 +118,6 @@ If the workflow fails, check the Actions log for details. Common issues:
 
 ## Next Steps
 
-- [⚙️ Configure](configure.md) the LLM model, personality, and behavior
-- [💬 Issues Management](issues-management.md) to learn how conversations work
-- [🚀 Action Management](action-management.md) to customize the workflow
+- [Configure](configure.md) the LLM model, personality, and behavior
+- [Issues Management](issues-management.md) to learn how conversations work
+- [Action Management](action-management.md) to customize the workflow

@@ -1,6 +1,6 @@
 # japer-technology/github-claw
 
-### [🦞Home](/.github-claw/README.md) [🦞Quick Start](/.github-claw/github-claw-QUICKSTART.md) [🦞The Repo is the Mind](/THE-REPO-IS-THE-MIND.md)
+### A repo-native AI agent system that runs through GitHub Issues + Actions, with persistent memory in git and no separate backend infrastructure.
 
 <p align="center">
   <picture>
@@ -8,3 +8,4 @@
   </picture>
 </p>
 
+### [🦞Home](/.github-claw/README.md) [🦞Quick Start](/.github-claw/github-claw-QUICKSTART.md) [🦞The Repo is the Mind](/THE-REPO-IS-THE-MIND.md)

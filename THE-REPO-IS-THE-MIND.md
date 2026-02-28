@@ -10,7 +10,7 @@ Installing `.github-claw` into a repository is **composition**â€”the agent serve
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="500">
   </picture>
 </p>
 
@@ -132,8 +132,8 @@ Any other repository is where `.github-claw` **operates**. It is the deploymentâ
 The entire architecture of `.github-claw` is rigorously optimized for **installation**. Every technical decision reinforces composition over inheritance:
 
 * **Self-Contained Folder:** `.github-claw/` has zero external file dependencies, allowing it to be dropped into any repository unmodified.
-* **The Installer Script:** `GITCLAW-INSTALLER.ts` bridges the gap between the isolated folder and the host's GitHub integration by moving workflows into `.github/`.
-* **Fail-Closed Sentinel:** `GITCLAW-ENABLED.md` ensures the agent remains dormant until explicitly awakened, preventing accidental executions in repos merely hosting the code.
+* **The Installer Script:** `github-claw-INSTALLER.ts` bridges the gap between the isolated folder and the host's GitHub integration by moving workflows into `.github/`.
+* **Fail-Closed Sentinel:** `github-claw-ENABLED.md` ensures the agent remains dormant until explicitly awakened, preventing accidental executions in repos merely hosting the code.
 * **Personality Hatching:** The onboarding logic strictly assumes the agent is meeting a *new* project for the first time.
 * **Git-Native State:** Sessions start empty by design, engineered to learn strictly from the host.
 

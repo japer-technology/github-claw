@@ -21,7 +21,7 @@ This removes everything: the agent code, configuration, session history, state, 
 ### 2. Remove the GitHub Actions workflow
 
 ```bash
-rm .github/workflows/GITCLAW-WORKFLOW-AGENT.yml
+rm .github/workflows/github-claw-WORKFLOW-AGENT.yml
 ```
 
 This stops the agent from being triggered on new issues or comments.
@@ -64,8 +64,8 @@ git push
 
 If you want to stop the agent but preserve conversation history for reference:
 
-1. Delete `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` — this prevents the agent from running
-2. Optionally delete `.github-claw/GITCLAW-ENABLED.md` — this is the fail-safe disable (see [Disable](disable.md))
+1. Delete `.github/workflows/github-claw-WORKFLOW-AGENT.yml` — this prevents the agent from running
+2. Optionally delete `.github-claw/github-claw-ENABLED.md` — this is the fail-safe disable (see [Disable](disable.md))
 3. Keep `.github-claw/state/` for historical sessions
 
 The session files in `.github-claw/state/sessions/` are plain JSONL files and remain readable without GitClaw installed.

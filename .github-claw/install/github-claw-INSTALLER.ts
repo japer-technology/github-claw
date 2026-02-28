@@ -1,12 +1,12 @@
 /**
- * GITCLAW-INSTALLER.ts — One-time setup script for gitclaw.
+ * github-claw-INSTALLER.ts — One-time setup script for gitclaw.
  *
  * Copies the GitHub Actions workflow, issue templates, and git attributes
  * from `.github-claw/install` into the standard locations the repo needs to function.
  * Existing files are never overwritten — only missing ones are installed.
  *
  * Usage:
- *   bun .github-claw/install/GITCLAW-INSTALLER.ts
+ *   bun .github-claw/install/github-claw-INSTALLER.ts
  */
 
 import { existsSync, mkdirSync, cpSync, readFileSync, writeFileSync } from "fs";
@@ -66,16 +66,16 @@ console.log("🔧 Installing gitclaw into this repository...\n");
 console.log("Workflows:");
 ensureDir(resolve(repoRoot, ".github", "workflows"));
 copyIfMissing(
-  resolve(bootstrapDir, "GITCLAW-WORKFLOW-AGENT.yml"),
-  resolve(repoRoot, ".github", "workflows", "GITCLAW-WORKFLOW-AGENT.yml"),
-  ".github/workflows/GITCLAW-WORKFLOW-AGENT.yml"
+  resolve(bootstrapDir, "github-claw-WORKFLOW-AGENT.yml"),
+  resolve(repoRoot, ".github", "workflows", "github-claw-WORKFLOW-AGENT.yml"),
+  ".github/workflows/github-claw-WORKFLOW-AGENT.yml"
 );
 
 // --- Issue templates --------------------------------------------------
 console.log("\nIssue templates:");
 ensureDir(resolve(repoRoot, ".github", "ISSUE_TEMPLATE"));
 copyIfMissing(
-  resolve(bootstrapDir, "GITCLAW-TEMPLATE-HATCH.md"),
+  resolve(bootstrapDir, "github-claw-TEMPLATE-HATCH.md"),
   resolve(repoRoot, ".github", "ISSUE_TEMPLATE", "hatch.md"),
   ".github/ISSUE_TEMPLATE/hatch.md"
 );
@@ -83,7 +83,7 @@ copyIfMissing(
 // --- Agent identity ---------------------------------------------------
 console.log("\nAgent identity:");
 ensureDir(resolve(repoRoot, ".github-claw"));
-copyIfMissing(resolve(bootstrapDir, "GITCLAW-AGENTS.md"), resolve(repoRoot, ".github-claw", "AGENTS.md"), ".github-claw/AGENTS.md");
+copyIfMissing(resolve(bootstrapDir, "github-claw-AGENTS.md"), resolve(repoRoot, ".github-claw", "AGENTS.md"), ".github-claw/AGENTS.md");
 
 // --- Git attributes --------------------------------------------------
 // `memory.log merge=union` tells git to union-merge the append-only

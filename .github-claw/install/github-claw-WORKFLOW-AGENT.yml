@@ -1,4 +1,4 @@
-name: GITCLAW-WORKFLOW-AGENT
+name: github-claw-WORKFLOW-AGENT
 
 on:
   issues:
@@ -41,12 +41,12 @@ jobs:
           bun-version: latest
 
       - name: Guard
-        run: bun .github-claw/lifecycle/GITCLAW-ENABLED.ts
+        run: bun .github-claw/lifecycle/github-claw-ENABLED.ts
 
       - name: Preinstall
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bun .github-claw/lifecycle/GITCLAW-INDICATOR.ts
+        run: bun .github-claw/lifecycle/github-claw-INDICATOR.ts
 
       - name: Install dependencies
         run: cd .github-claw && bun install --frozen-lockfile
@@ -61,4 +61,4 @@ jobs:
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: bun .github-claw/lifecycle/GITCLAW-AGENT.ts
+        run: bun .github-claw/lifecycle/github-claw-AGENT.ts

@@ -8,7 +8,7 @@ Manage the GitHub Actions workflow that powers GitClaw. This covers the workflow
 
 ## The GitClaw Workflow
 
-GitClaw runs as a GitHub Actions workflow defined in `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`. It triggers automatically when:
+GitClaw runs as a GitHub Actions workflow defined in `.github/workflows/github-claw-WORKFLOW-AGENT.yml`. It triggers automatically when:
 
 - A new issue is opened (`issues.opened`)
 - A comment is added to an issue (`issue_comment.created`)
@@ -22,16 +22,16 @@ Each workflow run executes these steps in order:
 | **Authorize** | (inline bash) | Verifies the actor has `admin`, `maintain`, or `write` permission |
 | **Checkout** | `actions/checkout@v4` | Checks out the repository at the default branch |
 | **Setup Bun** | `oven-sh/setup-bun@v2` | Installs the Bun runtime |
-| **Guard** | `lifecycle/GITCLAW-ENABLED.ts` | Checks the sentinel file — exits if missing |
-| **Preinstall** | `lifecycle/GITCLAW-INDICATOR.ts` | Adds the 👀 reaction to the issue |
+| **Guard** | `lifecycle/github-claw-ENABLED.ts` | Checks the sentinel file — exits if missing |
+| **Preinstall** | `lifecycle/github-claw-INDICATOR.ts` | Adds the 👀 reaction to the issue |
 | **Install** | `bun install` | Installs npm/bun dependencies |
-| **Run** | `lifecycle/GITCLAW-AGENT.ts` | Runs the AI agent and posts the reply |
+| **Run** | `lifecycle/github-claw-AGENT.ts` | Runs the AI agent and posts the reply |
 
 ## View Workflow Runs
 
 1. Go to your repository on GitHub
 2. Click the **Actions** tab
-3. Select **GITCLAW-WORKFLOW-AGENT** in the left sidebar
+3. Select **github-claw-WORKFLOW-AGENT** in the left sidebar
 4. Click any run to see its logs
 
 Each run shows which issue triggered it and the full execution log including the agent's reasoning.
@@ -46,7 +46,7 @@ Each run shows which issue triggered it and the full execution log including the
 
 ### Via sentinel file
 
-The workflow also respects the `.github-claw/GITCLAW-ENABLED.md` sentinel file. See [Disable](disable.md) and [Enable](enable.md) for details.
+The workflow also respects the `.github-claw/github-claw-ENABLED.md` sentinel file. See [Disable](disable.md) and [Enable](enable.md) for details.
 
 ## Re-run a Failed Workflow
 
@@ -60,7 +60,7 @@ This is useful when a run failed due to a transient error (e.g., API timeout, ra
 
 ### Filter by label
 
-To make the agent respond only to issues with a specific label, edit `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`:
+To make the agent respond only to issues with a specific label, edit `.github/workflows/github-claw-WORKFLOW-AGENT.yml`:
 
 ```yaml
 on:
@@ -116,7 +116,7 @@ To pass additional environment variables to the agent, add them to the **Run** s
     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     CUSTOM_VAR: "my-value"
-  run: bun .github-claw/lifecycle/GITCLAW-AGENT.ts
+  run: bun .github-claw/lifecycle/github-claw-AGENT.ts
 ```
 
 ## Switch API Key Provider
@@ -128,7 +128,7 @@ When changing LLM providers, update the workflow to reference the correct secret
   env:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Changed from ANTHROPIC_API_KEY
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  run: bun .github-claw/lifecycle/GITCLAW-AGENT.ts
+  run: bun .github-claw/lifecycle/github-claw-AGENT.ts
 ```
 
 Also update `.github-claw/.pi/settings.json` to match (see [Configure](configure.md)).
@@ -138,23 +138,23 @@ Also update `.github-claw/.pi/settings.json` to match (see [Configure](configure
 If the workflow file gets corrupted or you want to reset it to the template:
 
 ```bash
-rm .github/workflows/GITCLAW-WORKFLOW-AGENT.yml
-bun .github-claw/install/GITCLAW-INSTALLER.ts
+rm .github/workflows/github-claw-WORKFLOW-AGENT.yml
+bun .github-claw/install/github-claw-INSTALLER.ts
 ```
 
-The installer copies the workflow template from `.github-claw/install/GITCLAW-WORKFLOW-AGENT.yml`.
+The installer copies the workflow template from `.github-claw/install/github-claw-WORKFLOW-AGENT.yml`.
 
 ## Troubleshooting
 
 ### Workflow never triggers
 
-- Ensure the workflow file exists at `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`
+- Ensure the workflow file exists at `.github/workflows/github-claw-WORKFLOW-AGENT.yml`
 - Check that the workflow is not disabled (Actions tab → select workflow → look for "Enable workflow" button)
 - Verify the trigger events match your use case (`issues.opened`, `issue_comment.created`)
 
 ### Workflow fails at the Guard step
 
-The sentinel file `.github-claw/GITCLAW-ENABLED.md` is missing. See [Enable](enable.md) to restore it.
+The sentinel file `.github-claw/github-claw-ENABLED.md` is missing. See [Enable](enable.md) to restore it.
 
 ### Workflow fails at the Authorize step
 

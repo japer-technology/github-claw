@@ -2,7 +2,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/GITCLAW-LOGO.png" alt="GitClaw" width="500">
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="500">
   </picture>
 </p>
 
@@ -10,7 +10,7 @@
 
 An AI assistant that runs entirely through GitHub Issues and Actions. Drop a single `.github-claw` folder into any repo and you have a fully functional AI agent — no servers, no external services, no extra infrastructure.
 
-> **New here?** Check the [Quick Start](GITCLAW-QUICKSTART.md) to get running in under 5 minutes.
+> **New here?** Check the [Quick Start](github-claw-QUICKSTART.md) to get running in under 5 minutes.
 
 Powered by the [pi coding agent](https://github.com/badlogic/pi-mono). Every issue becomes a chat thread with an AI agent. Conversation history is committed to git, giving the agent long-term memory across sessions. It can search prior context, edit or summarize past conversations, and all changes are versioned.
 
@@ -58,7 +58,7 @@ gitclaw lives entirely inside a `.github-claw` folder that you drop into your re
 1. **Copy the `.github-claw` folder** into your repo's root.
 2. **Run the install script** to set up workflows and templates:
    ```bash
-   bun .github-claw/install/GITCLAW-INSTALLER.ts
+   bun .github-claw/install/github-claw-INSTALLER.ts
    ```
 3. **Install dependencies:**
    ```bash
@@ -85,21 +85,21 @@ Use the **🥚 Hatch** issue template (or create an issue with the `hatch` label
     BOOTSTRAP.md                    # First-run identity prompt
     skills/                         # Modular skill packages
   install/
-    GITCLAW-INSTALLER.ts            # Setup script — installs workflows & templates
-    GITCLAW-WORKFLOW-AGENT.yml      # GitHub Actions workflow template
-    GITCLAW-TEMPLATE-HATCH.md       # Issue template for personality hatching
-    GITCLAW-AGENTS.md               # Default agent identity file
+    github-claw-INSTALLER.ts            # Setup script — installs workflows & templates
+    github-claw-WORKFLOW-AGENT.yml      # GitHub Actions workflow template
+    github-claw-TEMPLATE-HATCH.md       # Issue template for personality hatching
+    github-claw-AGENTS.md               # Default agent identity file
     package.json                    # Installer dependencies
   lifecycle/
-    GITCLAW-AGENT.ts                # Core agent orchestrator
-    GITCLAW-INDICATOR.ts            # Adds/removes 👀 reaction on issue activity
-    GITCLAW-ENABLED.ts              # Fail-closed guard — verifies opt-in sentinel
+    github-claw-AGENT.ts                # Core agent orchestrator
+    github-claw-INDICATOR.ts            # Adds/removes 👀 reaction on issue activity
+    github-claw-ENABLED.ts              # Fail-closed guard — verifies opt-in sentinel
   docs/                             # Architecture, roadmap, and design docs
   tests/                            # Validation tests
   state/                            # Session history and issue mappings (git-tracked)
   AGENTS.md                         # Agent identity file
-  GITCLAW-ENABLED.md                # Sentinel file — delete to disable the agent
-  GITCLAW-QUICKSTART.md             # Quick start guide
+  github-claw-ENABLED.md                # Sentinel file — delete to disable the agent
+  github-claw-QUICKSTART.md             # Quick start guide
   LICENSE.md                        # MIT license
   package.json                      # Runtime dependencies
 ```
@@ -119,13 +119,13 @@ Set `defaultProvider` and `defaultModel` in `.github-claw/.pi/settings.json` and
 | Groq | `groq` | `deepseek-r1-distill-llama-70b` | `GROQ_API_KEY` |
 | OpenRouter | `openrouter` | any model on [openrouter.ai](https://openrouter.ai/) | `OPENROUTER_API_KEY` |
 
-> **Tip:** See the [Quick Start](GITCLAW-QUICKSTART.md#common-tweaks) for copy-paste `settings.json` examples for each provider.
+> **Tip:** See the [Quick Start](github-claw-QUICKSTART.md#common-tweaks) for copy-paste `settings.json` examples for each provider.
 
 ## Security
 
 The workflow only responds to repository **owners, members, and collaborators**. Random users cannot trigger the agent on public repos.
 
-The agent uses a **fail-closed guard**: every workflow run checks for the sentinel file `GITCLAW-ENABLED.md`. If it's missing, the workflow exits immediately. Delete or rename this file to disable the agent without removing any code.
+The agent uses a **fail-closed guard**: every workflow run checks for the sentinel file `github-claw-ENABLED.md`. If it's missing, the workflow exits immediately. Delete or rename this file to disable the agent without removing any code.
 
 If you plan to use gitclaw for anything private, **make the repo private**. Public repos mean your conversation history is visible to everyone, but get generous GitHub Actions usage.
 
@@ -141,9 +141,9 @@ If you plan to use gitclaw for anything private, **make the repo private**. Publ
 }
 ```
 
-**Make it read-only** — add `--tools read,grep,find,ls` to the agent args in `lifecycle/GITCLAW-AGENT.ts`.
+**Make it read-only** — add `--tools read,grep,find,ls` to the agent args in `lifecycle/github-claw-AGENT.ts`.
 
-**Filter by label** — edit `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` to only trigger on issues with a specific label.
+**Filter by label** — edit `.github/workflows/github-claw-WORKFLOW-AGENT.yml` to only trigger on issues with a specific label.
 
 **Adjust thinking level** — set `defaultThinkingLevel` to `"low"`, `"medium"`, or `"high"` in `settings.json` for different task complexities.
 
@@ -151,14 +151,14 @@ If you plan to use gitclaw for anything private, **make the repo private**. Publ
 
 | Document | Description |
 |---|---|
-| [Quick Start](GITCLAW-QUICKSTART.md) | Get running in under 5 minutes — setup, providers, and common tweaks |
-| [The Idea](docs/GITCLAW-The-Idea.md) | The philosophical vision — why a repo-native AI agent matters |
-| [Internal Mechanics](docs/GITCLAW-Internal-Mechanics.md) | Architecture, workflow steps, session management, and data model |
-| [Possibilities](docs/GITCLAW-Possibilities.md) | Current and future use cases, skill ideas, and design space |
-| [GitHub Possibilities](docs/GITCLAW-The-GitHub-Possibilities.md) | Analysis of every GitHub platform feature and what it means for GitClaw |
-| [Roadmap](docs/GITCLAW-Roadmap.md) | Phased plan from issue bot to full-platform agent |
-| [Cloud vs Local](docs/GITCLAW-Cloud-vs-Local.md) | Cloud (GitHub Actions) vs Local (pi CLI) — UX, capabilities, and trade-offs |
-| [Pi Agent Docs](docs/GITCLAW-Pi/GITCLAW-Pi-README.md) | Deep dive into the `.pi` agent configuration system |
+| [Quick Start](github-claw-QUICKSTART.md) | Get running in under 5 minutes — setup, providers, and common tweaks |
+| [The Idea](docs/github-claw-The-Idea.md) | The philosophical vision — why a repo-native AI agent matters |
+| [Internal Mechanics](docs/github-claw-Internal-Mechanics.md) | Architecture, workflow steps, session management, and data model |
+| [Possibilities](docs/github-claw-Possibilities.md) | Current and future use cases, skill ideas, and design space |
+| [GitHub Possibilities](docs/github-claw-The-GitHub-Possibilities.md) | Analysis of every GitHub platform feature and what it means for GitClaw |
+| [Roadmap](docs/github-claw-Roadmap.md) | Phased plan from issue bot to full-platform agent |
+| [Cloud vs Local](docs/github-claw-Cloud-vs-Local.md) | Cloud (GitHub Actions) vs Local (pi CLI) — UX, capabilities, and trade-offs |
+| [Pi Agent Docs](docs/github-claw-Pi/github-claw-Pi-README.md) | Deep dive into the `.pi` agent configuration system |
 | [Install Guide](install/README.md) | Detailed install process and installer workflow reference |
 
 ## Acknowledgments

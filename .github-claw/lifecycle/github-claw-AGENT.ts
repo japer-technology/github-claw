@@ -1,5 +1,5 @@
 /**
- * GITCLAW-AGENT.ts — Core agent orchestrator for GitClaw.
+ * github-claw-AGENT.ts — Core agent orchestrator for GitClaw.
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * PURPOSE
@@ -14,10 +14,10 @@
  * LIFECYCLE POSITION
  * ─────────────────────────────────────────────────────────────────────────────
  * Workflow step order:
- *   1. Guard       (GITCLAW-ENABLED.ts)   — verify opt-in sentinel exists
- *   2. Preinstall  (GITCLAW-INDICATOR.ts) — add 👀 reaction indicator
+ *   1. Guard       (github-claw-ENABLED.ts)   — verify opt-in sentinel exists
+ *   2. Preinstall  (github-claw-INDICATOR.ts) — add 👀 reaction indicator
  *   3. Install     (bun install)            — install npm/bun dependencies
- *   4. Run         (GITCLAW-AGENT.ts)     ← YOU ARE HERE
+ *   4. Run         (github-claw-AGENT.ts)     ← YOU ARE HERE
  *
  * ─────────────────────────────────────────────────────────────────────────────
  * AGENT EXECUTION PIPELINE
@@ -36,7 +36,7 @@
  *   7. Stage, commit, and push all changes (session log, mapping, repo edits)
  *      back to the default branch with an automatic retry-on-conflict loop.
  *   8. Post the extracted reply as a new comment on the originating issue.
- *   9. [finally] Remove the 👀 reaction that `GITCLAW-INDICATOR.ts` added,
+ *   9. [finally] Remove the 👀 reaction that `github-claw-INDICATOR.ts` added,
  *      guaranteeing cleanup even if the agent threw an unhandled error.
  *
  * ─────────────────────────────────────────────────────────────────────────────
@@ -156,8 +156,8 @@ async function gh(...args: string[]): Promise<string> {
   return stdout;
 }
 
-// ─── Restore reaction state from GITCLAW-INDICATOR.ts ────────────────────────
-// `GITCLAW-INDICATOR.ts` runs before dependency installation and writes the 👀
+// ─── Restore reaction state from github-claw-INDICATOR.ts ────────────────────────
+// `github-claw-INDICATOR.ts` runs before dependency installation and writes the 👀
 // reaction metadata to `/tmp/reaction-state.json`.  We read it here so the
 // `finally` block can delete the reaction when the agent finishes (or errors).
 // If the file is absent (e.g., indicator step was skipped), we default to null.

@@ -19,11 +19,11 @@ Set up a fully functional AI agent in any GitHub repository in under 5 minutes. 
 Copy the `.github-claw` folder into the root of your repository. Then run the install script:
 
 ```bash
-bun .github-claw/install/GITCLAW-INSTALLER.ts
+bun .github-claw/install/github-claw-INSTALLER.ts
 ```
 
 The installer will:
-- Create `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` — the GitHub Actions workflow that triggers the agent
+- Create `.github/workflows/github-claw-WORKFLOW-AGENT.yml` — the GitHub Actions workflow that triggers the agent
 - Create `.github/ISSUE_TEMPLATE/hatch.md` — an issue template for personality hatching
 - Create `.github-claw/AGENTS.md` — the agent identity file (if not already present)
 - Add a `memory.log merge=union` rule to `.gitattributes` for conflict-free memory logging
@@ -53,7 +53,7 @@ Go to your GitHub repository **Settings → Secrets and variables → Actions �
 | Groq | `GROQ_API_KEY` | [console.groq.com](https://console.groq.com/) |
 | OpenRouter | `OPENROUTER_API_KEY` | [openrouter.ai](https://openrouter.ai/) |
 
-Make sure the secret name in your workflow (`.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`) matches. The default workflow template references `ANTHROPIC_API_KEY`.
+Make sure the secret name in your workflow (`.github/workflows/github-claw-WORKFLOW-AGENT.yml`) matches. The default workflow template references `ANTHROPIC_API_KEY`.
 
 ### 4. Commit and push
 
@@ -74,7 +74,7 @@ The 👀 reaction appears while the agent is working and disappears when it fini
 ```
 .github/
   workflows/
-    GITCLAW-WORKFLOW-AGENT.yml                  # GitHub Actions workflow
+    github-claw-WORKFLOW-AGENT.yml                  # GitHub Actions workflow
   ISSUE_TEMPLATE/
     hatch.md                   # Personality hatching template
 .github-claw/
@@ -109,7 +109,7 @@ After pushing, open a test issue. You should see:
 If the workflow fails, check the Actions log for details. Common issues:
 
 - **Missing API key** — the agent posts a helpful comment explaining how to fix it
-- **Sentinel file missing** — ensure `.github-claw/GITCLAW-ENABLED.md` exists (see [Enable](enable.md))
+- **Sentinel file missing** — ensure `.github-claw/github-claw-ENABLED.md` exists (see [Enable](enable.md))
 - **Permission denied** — only repository owners, members, and collaborators can trigger the agent
 
 ## Next Steps

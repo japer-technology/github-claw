@@ -50,11 +50,11 @@ cp /tmp/APPEND_SYSTEM.md.bak .github-claw/.pi/APPEND_SYSTEM.md
 ### 4. Run the installer and install dependencies
 
 ```bash
-bun .github-claw/install/GITCLAW-INSTALLER.ts
+bun .github-claw/install/github-claw-INSTALLER.ts
 cd .github-claw && bun install
 ```
 
-> The installer never overwrites existing files — it only creates missing ones. This means your existing `GITCLAW-WORKFLOW-AGENT.yml` workflow will remain as-is. If the workflow template has changed, delete `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` before running the installer to get the latest version.
+> The installer never overwrites existing files — it only creates missing ones. This means your existing `github-claw-WORKFLOW-AGENT.yml` workflow will remain as-is. If the workflow template has changed, delete `.github/workflows/github-claw-WORKFLOW-AGENT.yml` before running the installer to get the latest version.
 
 ### 5. Commit and push
 
@@ -72,7 +72,7 @@ To completely reset GitClaw, including all conversation history:
 
 ```bash
 rm -rf .github-claw
-rm -f .github/workflows/GITCLAW-WORKFLOW-AGENT.yml
+rm -f .github/workflows/github-claw-WORKFLOW-AGENT.yml
 rm -f .github/ISSUE_TEMPLATE/hatch.md
 ```
 
@@ -83,7 +83,7 @@ Copy the `.github-claw` folder from the latest release into your repo root.
 ### 3. Run the full installation
 
 ```bash
-bun .github-claw/install/GITCLAW-INSTALLER.ts
+bun .github-claw/install/github-claw-INSTALLER.ts
 cd .github-claw && bun install
 ```
 
@@ -106,10 +106,10 @@ If only the GitHub Actions workflow is broken or outdated:
 
 ```bash
 # Remove the old workflow
-rm .github/workflows/GITCLAW-WORKFLOW-AGENT.yml
+rm .github/workflows/github-claw-WORKFLOW-AGENT.yml
 
 # Re-run the installer to regenerate it from the template
-bun .github-claw/install/GITCLAW-INSTALLER.ts
+bun .github-claw/install/github-claw-INSTALLER.ts
 
 git add -A
 git commit -m "Regenerate gitclaw workflow"

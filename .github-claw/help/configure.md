@@ -15,7 +15,7 @@ Customize the LLM provider, model, agent personality, thinking level, tool acces
 | `.github-claw/.pi/APPEND_SYSTEM.md` | System prompt loaded every session |
 | `.github-claw/.pi/BOOTSTRAP.md` | First-run identity prompt (used during hatching) |
 | `.github-claw/.pi/skills/` | Modular skill packages |
-| `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml` | Workflow triggers, permissions, and environment variables |
+| `.github/workflows/github-claw-WORKFLOW-AGENT.yml` | Workflow triggers, permissions, and environment variables |
 
 ## Change the LLM Provider and Model
 
@@ -209,7 +209,7 @@ Edit `.github-claw/.pi/APPEND_SYSTEM.md` to change the system-level instructions
 
 ## Make the Agent Read-Only
 
-To restrict the agent to read-only operations (no file edits, no git pushes of code changes), add `--tools read,grep,find,ls` to the agent arguments in `lifecycle/GITCLAW-AGENT.ts`.
+To restrict the agent to read-only operations (no file edits, no git pushes of code changes), add `--tools read,grep,find,ls` to the agent arguments in `lifecycle/github-claw-AGENT.ts`.
 
 This is useful when you want the agent to answer questions about the codebase without making modifications.
 
@@ -232,7 +232,7 @@ API keys are stored as GitHub repository secrets and passed to the workflow as e
 
 ### Reference the secret in the workflow
 
-In `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`, add the secret as an environment variable in the **Run** step:
+In `.github/workflows/github-claw-WORKFLOW-AGENT.yml`, add the secret as an environment variable in the **Run** step:
 
 ```yaml
 - name: Run
@@ -245,7 +245,7 @@ In `.github/workflows/GITCLAW-WORKFLOW-AGENT.yml`, add the secret as an environm
     MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
     GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  run: bun .github-claw/lifecycle/GITCLAW-AGENT.ts
+  run: bun .github-claw/lifecycle/github-claw-AGENT.ts
 ```
 
 This keeps all supported provider keys managed in one place, so changing `defaultProvider` does not require workflow edits.

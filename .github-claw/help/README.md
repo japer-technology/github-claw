@@ -2,7 +2,7 @@
 
 <p align="center">
   <picture>
-    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/GITCLAW-LOGO.png" alt="GitClaw" width="400">
+    <img src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png" alt="GitClaw" width="400">
   </picture>
 </p>
 
@@ -30,10 +30,10 @@ Welcome to the GitClaw help center. Everything you need to install, configure, a
 ## Quick Links
 
 - [🦞 GitClaw Home](../README.md)
-- [🦞 Quick Start](../GITCLAW-QUICKSTART.md)
-- [🦞 Internal Mechanics](../docs/GITCLAW-Internal-Mechanics.md)
-- [🦞 Roadmap](../docs/GITCLAW-Roadmap.md)
-- [🦞 Possibilities](../docs/GITCLAW-Possibilities.md)
+- [🦞 Quick Start](../github-claw-QUICKSTART.md)
+- [🦞 Internal Mechanics](../docs/github-claw-Internal-Mechanics.md)
+- [🦞 Roadmap](../docs/github-claw-Roadmap.md)
+- [🦞 Possibilities](../docs/github-claw-Possibilities.md)
 
 ---
 

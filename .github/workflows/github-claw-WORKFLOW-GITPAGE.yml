@@ -2,9 +2,11 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes targeting the default branch when the public folder changes
   push:
     branches: ["main"]
+    paths:
+      - '.github-claw/github-io-public/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -36,7 +38,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.github-fabric/public-fabric'
+          path: '.github-claw/github-io-public'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

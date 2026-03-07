@@ -1,1 +1,452 @@
-<html></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>github-claw 🦞 — Repo-Native AI Agent</title>
+  <style>
+    :root {
+      --red:    #c0392b;
+      --dark:   #1a1a1a;
+      --mid:    #2d2d2d;
+      --border: #3d3d3d;
+      --text:   #e8e8e8;
+      --muted:  #a0a0a0;
+      --link:   #e74c3c;
+      --link-h: #ff6b5b;
+      --code-bg:#252525;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Header ─────────────────────────────────────────── */
+    header {
+      background: var(--mid);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    header img { width: min(420px, 80vw); margin-bottom: 1.75rem; }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+    header h1 span { color: var(--red); }
+    header p {
+      max-width: 660px;
+      margin: 0.75rem auto 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .tagline {
+      display: inline-block;
+      margin-top: 1.25rem;
+      background: rgba(192,57,43,.15);
+      border: 1px solid rgba(192,57,43,.4);
+      color: #e87c72;
+      border-radius: 999px;
+      padding: 0.3rem 1rem;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    /* ── Layout ──────────────────────────────────────────── */
+    main { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    section { margin-bottom: 3rem; }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    h3 { font-size: 1.05rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+    p  { margin-bottom: 0.9rem; color: var(--muted); }
+    a  { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-h); text-decoration: underline; }
+
+    /* ── Feature grid ────────────────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: var(--mid);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.25rem;
+    }
+    .card .icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+    .card h3   { margin: 0 0 0.3rem; font-size: 0.95rem; color: var(--text); }
+    .card p    { font-size: 0.88rem; margin: 0; color: var(--muted); }
+
+    /* ── How it works ────────────────────────────────────── */
+    .steps { counter-reset: step; list-style: none; }
+    .steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .steps li:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0;
+      width: 2rem; height: 2rem;
+      border-radius: 50%;
+      background: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.85rem;
+      counter-increment: step;
+    }
+    .steps li div { color: var(--muted); font-size: 0.95rem; }
+    .steps li div strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
+
+    /* ── Tables ──────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { padding: 0.65rem 0.85rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--mid); color: var(--text); font-weight: 600; }
+    td { color: var(--muted); }
+    td:first-child { color: var(--text); }
+
+    /* ── Code block ──────────────────────────────────────── */
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      font-size: 0.87rem;
+      line-height: 1.55;
+      color: #cdd3de;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+    code {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.1em 0.4em;
+      font-family: inherit;
+      font-size: 0.87em;
+      color: #cdd3de;
+    }
+    pre code { background: none; border: none; padding: 0; font-size: inherit; }
+
+    /* ── CTA buttons ─────────────────────────────────────── */
+    .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: 0.85; text-decoration: none; }
+    .btn-primary   { background: var(--red); color: #fff; }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--link-h); }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ──────────────────────────────────────────────── -->
+<header>
+  <img
+    src="https://raw.githubusercontent.com/japer-technology/gitclaw/main/.github-claw/github-claw-LOGO.png"
+    alt="github-claw logo"
+  />
+  <h1><span>github-claw</span> 🦞</h1>
+  <p>
+    A repo-native AI agent that runs entirely through GitHub Issues&nbsp;+&nbsp;Actions —
+    no servers, no external services, no extra infrastructure.
+  </p>
+  <span class="tagline">The Repo is the Mind</span>
+
+  <div class="cta" style="justify-content:center;margin-top:1.5rem">
+    <a class="btn btn-primary"
+       href="https://github.com/japer-technology/github-claw">
+      ★ View on GitHub
+    </a>
+    <a class="btn btn-secondary"
+       href="https://github.com/japer-technology/github-claw/blob/main/.github-claw/github-claw-QUICKSTART.md">
+      Quick Start →
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── WHAT IS IT ─────────────────────────────────────────── -->
+  <section>
+    <h2>What is github-claw?</h2>
+    <p>
+      <strong style="color:var(--text)">github-claw</strong> is a self-contained AI agent
+      that you drop into any GitHub repository as a single <code>.github-claw/</code> folder.
+      Every issue you open becomes a chat thread with an AI agent. The agent reads the issue,
+      thinks, and replies as a comment — with 👀 shown while it works.
+    </p>
+    <p>
+      Conversation history is committed back to git after every turn, giving the agent
+      long-term, versioned memory with no external database required.
+      Powered by <a href="https://github.com/badlogic/pi-mono">pi coding agent</a>.
+    </p>
+  </section>
+
+  <!-- ── FEATURES ──────────────────────────────────────────── -->
+  <section>
+    <h2>Why github-claw?</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📁</div>
+        <h3>Single folder, any repo</h3>
+        <p>Copy <code>.github-claw/</code> in and run the install script. Nothing to host or maintain.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Zero infrastructure</h3>
+        <p>Runs on GitHub Actions with your repo as the only backend.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧠</div>
+        <h3>Persistent memory</h3>
+        <p>Conversations are committed to git — the agent remembers everything across sessions.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔍</div>
+        <h3>Full auditability</h3>
+        <p>Every interaction is versioned; review or roll back any change the agent made.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>Multi-provider LLM</h3>
+        <p>Works with Anthropic, OpenAI, Google Gemini, xAI, DeepSeek, Mistral, Groq, and OpenRouter.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔧</div>
+        <h3>Modular skill system</h3>
+        <p>Agent capabilities are self-contained Markdown files — user-extensible and composable.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🥚</div>
+        <h3>Personality hatching</h3>
+        <p>Give the agent a name, personality, and vibe through a guided issue conversation.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔒</div>
+        <h3>Fail-closed security</h3>
+        <p>Agent does nothing unless explicitly opted in via a sentinel file. Only repo members can trigger it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ───────────────────────────────────────── -->
+  <section>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li>
+        <span class="step-num">1</span>
+        <div>
+          <strong>Open an issue</strong>
+          GitHub Actions triggers the agent workflow automatically.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div>
+          <strong>Agent reacts with 👀</strong>
+          Visual feedback that it's picked up the issue before any heavy computation starts.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div>
+          <strong>Agent thinks and responds</strong>
+          The AI reads your issue (with full prior session context), acts on it, then posts a reply as a comment.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div>
+          <strong>State is committed to git</strong>
+          The session and any file changes are pushed back to the repo — versioned, auditable, recoverable.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <div>
+          <strong>Comment to continue</strong>
+          Reply on the same issue to resume the conversation. The agent loads that session and picks up where it left off.
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ── REPO STORAGE ───────────────────────────────────────── -->
+  <section>
+    <h2>Repo as storage</h2>
+    <p>All state lives directly in the repository — no database, no session cookies, just git:</p>
+    <pre><code>.github-claw/state/
+  issues/
+    1.json          # maps issue #1 → its session file
+  sessions/
+    2026-02-04T..._abc123.jsonl    # full conversation for issue #1</code></pre>
+    <p>
+      Each issue number is a stable conversation key. When you comment on an issue weeks later,
+      the agent loads the linked session and continues. Every word is in version control.
+    </p>
+  </section>
+
+  <!-- ── SETUP ─────────────────────────────────────────────── -->
+  <section>
+    <h2>Setup — add to any repo in 5 minutes</h2>
+    <ol class="steps">
+      <li>
+        <span class="step-num">1</span>
+        <div>
+          <strong>Copy the <code>.github-claw</code> folder</strong>
+          into your repo root.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div>
+          <strong>Run the install script</strong>
+          <pre style="margin-top:.5rem"><code>bun .github-claw/install/github-claw-INSTALLER.ts</code></pre>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div>
+          <strong>Install dependencies</strong>
+          <pre style="margin-top:.5rem"><code>cd .github-claw &amp;&amp; bun install</code></pre>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div>
+          <strong>Add your LLM API key</strong>
+          Go to <em>Settings → Secrets and variables → Actions</em> and create a secret for your chosen provider.
+        </div>
+      </li>
+      <li>
+        <span class="step-num">5</span>
+        <div>
+          <strong>Commit, push, and open an issue</strong>
+          The agent starts automatically.
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ── PROVIDERS ─────────────────────────────────────────── -->
+  <section>
+    <h2>Supported LLM providers</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th><code>defaultProvider</code></th>
+            <th>Example model</th>
+            <th>API key secret</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Anthropic</td><td><code>anthropic</code></td><td><code>claude-sonnet-4-20250514</code></td><td><code>ANTHROPIC_API_KEY</code></td></tr>
+          <tr><td>OpenAI</td><td><code>openai</code></td><td><code>gpt-5.3-codex</code></td><td><code>OPENAI_API_KEY</code></td></tr>
+          <tr><td>Google Gemini</td><td><code>google</code></td><td><code>gemini-2.5-pro</code></td><td><code>GEMINI_API_KEY</code></td></tr>
+          <tr><td>xAI (Grok)</td><td><code>xai</code></td><td><code>grok-3</code></td><td><code>XAI_API_KEY</code></td></tr>
+          <tr><td>DeepSeek</td><td><code>openrouter</code></td><td><code>deepseek/deepseek-r1</code></td><td><code>OPENROUTER_API_KEY</code></td></tr>
+          <tr><td>Mistral</td><td><code>mistral</code></td><td><code>mistral-large-latest</code></td><td><code>MISTRAL_API_KEY</code></td></tr>
+          <tr><td>Groq</td><td><code>groq</code></td><td><code>deepseek-r1-distill-llama-70b</code></td><td><code>GROQ_API_KEY</code></td></tr>
+          <tr><td>OpenRouter</td><td><code>openrouter</code></td><td>any model on <a href="https://openrouter.ai/">openrouter.ai</a></td><td><code>OPENROUTER_API_KEY</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── SECURITY ───────────────────────────────────────────── -->
+  <section>
+    <h2>Security</h2>
+    <p>
+      The workflow only responds to repository <strong style="color:var(--text)">owners, members, and collaborators</strong>.
+      Random users cannot trigger the agent on public repos.
+    </p>
+    <p>
+      The agent uses a <strong style="color:var(--text)">fail-closed guard</strong>: every workflow run checks for
+      the sentinel file <code>github-claw-ENABLED.md</code>. If it's missing, the workflow exits immediately.
+      Delete or rename that file to disable the agent without removing any code.
+    </p>
+  </section>
+
+  <!-- ── LINKS ─────────────────────────────────────────────── -->
+  <section>
+    <h2>Documentation</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Document</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://github.com/japer-technology/github-claw/blob/main/.github-claw/github-claw-QUICKSTART.md">Quick Start</a></td>
+            <td>Get running in under 5 minutes — setup, providers, and common tweaks</td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/japer-technology/github-claw/blob/main/.github-claw/README.md">Full README</a></td>
+            <td>Security, configuration, storage, and supported providers</td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/japer-technology/github-claw/blob/main/THE-REPO-IS-THE-MIND.md">The Repo is the Mind</a></td>
+            <td>Architecture philosophy — composition vs. inheritance, tool vs. subject</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cta" style="margin-top:1.5rem">
+      <a class="btn btn-primary"
+         href="https://github.com/japer-technology/github-claw/blob/main/.github-claw/github-claw-QUICKSTART.md">
+        Get Started →
+      </a>
+      <a class="btn btn-secondary"
+         href="https://github.com/japer-technology/github-claw">
+        ★ Star on GitHub
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    Built on <a href="https://github.com/badlogic/pi-mono">pi-mono</a> by
+    <a href="https://github.com/badlogic">Mario Zechner</a>.
+    &nbsp;·&nbsp;
+    <a href="https://github.com/japer-technology/github-claw">japer-technology/github-claw</a>
+  </p>
+</footer>
+
+</body>
+</html>

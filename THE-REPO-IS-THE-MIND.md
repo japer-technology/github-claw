@@ -147,7 +147,7 @@ The fork parent is a development environment. It is filled with test suites, arc
 ┌─────────────────────────────────────────────────────────────┐
 │                        FORK PARENT                          │
 ├─────────────────────────────────────────────────────────────┤
-│  • The .github-claw repo IS the project.                        │
+│  • The .github-claw repo IS the project.                    │
 │  • The agent IS the subject.                                │
 │  • Identity is self-referential (The mirror).               │
 │  • History is development history.                          │
@@ -162,7 +162,7 @@ The fork parent is a development environment. It is filled with test suites, arc
 ┌─────────────────────────────────────────────────────────────┐
 │                        INSTALLATION                         │
 ├─────────────────────────────────────────────────────────────┤
-│  • The host repo HAS a .github-claw agent.                      │
+│  • The host repo HAS a .github-claw agent.                  │
 │  • The agent is a tool serving the project.                 │
 │  • Identity is derived from the host (The lens).            │
 │  • History is operational history.                          │
